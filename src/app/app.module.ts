@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
-//import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EmployeeService } from './services/employee.service';
+import { Globals } from './globals';
+
 
 @NgModule({
   declarations: [
@@ -19,11 +20,9 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-   HttpClient
-   //HTTP_INTERCEPTORS
-
+    HttpClientModule
   ],
-  providers: [],
+  providers: [Globals,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

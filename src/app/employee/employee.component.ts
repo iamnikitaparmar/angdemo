@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
+import { EmployeeService } from '../services/employee.service';
+
+import { Globals } from '../globals';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-employee',
@@ -8,10 +14,23 @@ import { HttpClient } from 'selenium-webdriver/http';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(public http : HttpClient) { }
+  roleList;
 
+  constructor(public http : HttpClient , private EmployeeService: EmployeeService,public globals: Globals, private router: Router, private route: ActivatedRoute) { }
+  
   ngOnInit() {
+    debugger
+
+    this.EmployeeService.getemployee()
+      .then((data) => {
+        this.roleList = data;
+        console.log(this.roleList);
+      },
+        (error) => {
+          //alert('error');
+        });
   }
+  
   
 
 }

@@ -8,12 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeeListComponent implements OnInit {
      public employees = [];
 
-  constructor(private _employeeServices.get) { }
-
-  ngOnInit() {
-    this._employeeServices.getemployee()
-      .subscribe(data => this.employees = data);
-
+  constructor() { }
+    ngOnInit() {
+      
+      this.employeeservice.getemployee()
+        .then((data) => {
+          debugger
+          this.employee-list = data;
+         
+        },
+          (error) => {
+            this.router.navigate(['/admin/pagenotfound']);
+          });
+      this.msgflag = false;
+    }
   }
 
-}
+
