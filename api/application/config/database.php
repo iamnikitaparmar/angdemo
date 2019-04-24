@@ -71,14 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-if (defined('ACTIVE_GROUP')) 
-{
-    $active_group = ACTIVE_GROUP;
-} else
-{
-    $active_group = 'default';
-}
-
+$active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
@@ -86,73 +79,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	// 'hostname' => '192.168.1.170',
-	// 'username' => 'vidhi',
-	// 'password' => 'vidhi@123',
-	'database' => 'evaluation',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-$db['Development'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'devbyo5_Evaluation',
-	'password' => 'Jp@Gw.Ja2p*r',
-	'database' => 'devbyo5_Evaluation',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-$db['Production'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'uatbyo5_Evaluation',
-	'password' => 'hWsrqinD(IRd',
-	'database' => 'uatbyo5_Evaluation',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-$db['QA'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'uatbyo5_Evaluation',
-	'password' => 'hWsrqinD(IRd',
-	'database' => 'uatbyo5_Evaluation',
+	'database' => 'db_weekly_task',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
