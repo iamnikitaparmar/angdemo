@@ -1,27 +1,38 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EmployeeService } from '../services/employee.service';
+import { Globals } from '../globals';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
+  
 })
 export class EmployeeListComponent implements OnInit {
      public employees = [];
+     employeeData;
+     employeeEntity;
+    
 
-  constructor() { }
+  constructor(private router: Router,private EmployeeService: EmployeeService,public globals: Globals,private route: ActivatedRoute) { }
     ngOnInit() {
-      
-      this.employeeservice.getemployee()
-        .then((data) => {
-          debugger
-          this.employee-list = data;
-         
-        },
-          (error) => {
-            this.router.navigate(['/admin/pagenotfound']);
-          });
-      this.msgflag = false;
+      debugger
+      this.employeeEntity={};
     }
+    InsertEmployee(employeeForm){
+      
+      this.EmployeeService.InsertEmployee(this.employeeEntity)
+      .then((data) => {
+        this.employeeData = data;
+        console.log(this.employeeData);
+      },
+        (error) => {
+          //alert('error');
+        });
+    }
+
   }
 
 

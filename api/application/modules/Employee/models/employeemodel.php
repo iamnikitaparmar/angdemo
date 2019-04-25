@@ -5,8 +5,21 @@ class Employeemodel extends CI_Model
 	public function insert($data)
 	{
 	  if ($data) {
+			$post_data =$data[];
+
+			$insertdata=array(
+				"EmployeeName"=>trim($post_data['EmployeeName']),
+				"JoiningDate" =>date('y-m-d H:i:s'),
+				"BirthDate" =>date('y-m-d H:i:s'),
+				"Address"=>trim($post_data['Address']),
+				"PhoneNo"=>trim($post_data['PhoneNo']),
+				"Designation"=>trim($post_data['Designation']),
+				"EmailId"=>trim($post_data['EmailId']),
+				"IsActive"=>trim($post_data['IsActive'])
+				);
+
   
-		$res = $this->db->insert('tblemployees', $data);
+		$res = $this->db->insert('tblemployees', $insertdata);
 		if ($res) {
 		  return true;
 		} else {

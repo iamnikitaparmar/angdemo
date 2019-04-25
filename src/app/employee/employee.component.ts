@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeService } from '../services/employee.service';
-
 import { Globals } from '../globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -13,8 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-
-  roleList;
+  employeeList;
 
   constructor(public http : HttpClient , private EmployeeService: EmployeeService,public globals: Globals, private router: Router, private route: ActivatedRoute) { }
   
@@ -23,8 +21,8 @@ export class EmployeeComponent implements OnInit {
 
     this.EmployeeService.getemployee()
       .then((data) => {
-        this.roleList = data;
-        console.log(this.roleList);
+        this.employeeList = data;
+        console.log(this.employeeList);
       },
         (error) => {
           //alert('error');

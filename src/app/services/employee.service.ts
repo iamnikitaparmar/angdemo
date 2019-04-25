@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IEmployee } from '../employee';
+//import { IEmployee } from '../employee';
 
 import { Router } from '@angular/router';
 import { Globals } from '.././globals';
@@ -11,10 +11,25 @@ import { Globals } from '.././globals';
   providedIn: 'root'
 })
 export class EmployeeService {
+  constructor(private http: HttpClient, private globals: Globals, private router: Router ) { }
 
-  //private _url: string = "http://localhost/angdemo/api/employee";
-
-  constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
+  InsertEmployee(employeeEntity) {
+    debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.post(this.globals.baseAPIUrl + 'Employee/insert_data', employeeEntity)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+            reject(msg);
+            
+          }
+        );
+    });
+    return promise;
+  }
 
   getemployee() {
     debugger
@@ -26,7 +41,7 @@ export class EmployeeService {
             resolve(res);
           },
           msg => { // Error
-            reject(msg.json());
+            reject(msg);
 
             this.router.navigate(['/pagenotfound']);
           }

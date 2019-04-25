@@ -1,3 +1,30 @@
-<p>
-  employee-list works!
-</p>
+
+<form role="form" #employeeForm="ngForm" (ngSubmit)="InsertEmployee(employeeForm)">
+
+    <label>Employee Name</label>
+    <input type="text" #EmployeeName="ngModel" [(ngModel)]="employeeEntity.EmployeeName" name="EmployeeName"><br>
+
+    <label>Joining Date</label>
+    <input type="date" #JoiningDate="ngModel" [(ngModel)]="employeeEntity.JoiningDate" name="JoiningDate"><br>
+
+    <label>BirthDate</label>
+    <input type="date" #BirthDate="ngModel" [(ngModel)]="employeeEntity.BirthDate" name="BirthDate"><br>
+
+    <label>Address</label>
+    <textarea cols="25" rows="5" name="Address" #Address="ngModel" [(ngModel)]="employeeEntity.Address"></textarea><br>
+
+    <label>PhoneNo</label>
+    <input type="text" #PhoneNo="ngModel" [(ngModel)]="employeeEntity.PhoneNo" name="PhoneNo"><br>
+
+    <label>Designation</label>
+    <input type="text" #Designation="ngModel" [(ngModel)]="employeeEntity.Designation" name="Designation"><br>
+
+    <label>EmailId</label>
+    <input type="text" #EmailId="ngModel" [(ngModel)]="employeeEntity.EmailId" name="EmailId"><br>
+
+    <label>IsActive</label>
+    <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="yes"> Yes
+    <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="no"> No<br>
+
+    <button type="submit"><span>Submit</span></button>
+</form>
