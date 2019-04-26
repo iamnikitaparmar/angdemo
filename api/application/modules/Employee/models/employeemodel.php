@@ -5,7 +5,7 @@ class Employeemodel extends CI_Model
 	public function insert($data)
 	{
 	  if ($data) {
-			$post_data =$data[];
+			$post_data =$data;
 
 			$insertdata=array(
 				"EmployeeName"=>trim($post_data['EmployeeName']),

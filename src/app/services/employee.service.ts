@@ -49,5 +49,26 @@ export class EmployeeService {
     });
     return promise;
   }
+
+  fetch_empolyee(id){
+
+    debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'employee/update' + id)
+        .toPromise()
+        .then(
+          res => { // Success 
+            resolve(res);
+          },
+          msg => { // Error
+            reject(msg);
+
+            this.router.navigate(['/pagenotfound']);
+          }
+        );
+    });
+    return promise;
 }
+  }
+
 

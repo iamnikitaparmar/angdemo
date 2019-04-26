@@ -1,8 +1,5 @@
  
-<!-- <div *ngFor="let employee of employeeList">
-    <p>{{employee.EmployeeId}}  </p>
-    <p> {{employee.EmployeeName}} </p>
-</div> -->
+
 <table border="1">
     <tr>
         <th>EmployeeId</th>
@@ -14,6 +11,7 @@
         <th>Designation</th>
         <th>EmailId </th>
         <th>IsActive</th>
+        <th>Change</th>
     </tr>
     <tr *ngFor="let employee of employeeList">
         <td>{{employee.EmployeeId}} </td>
@@ -25,5 +23,6 @@
         <td>{{employee.Designation}} </td>
         <td>{{employee.EmailId}} </td>
         <td>{{employee.IsActive}} </td>
+        <td><a href="http://localhost:4200/employee/edit/{{employee.EmployeeId}}">Update</a><a href="http://localhost/angdemo/api/employee/delete?id={{employee.EmployeeId}}">Delete</a></td>
     </tr>
 </table>

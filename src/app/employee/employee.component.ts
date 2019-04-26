@@ -13,9 +13,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmployeeComponent implements OnInit {
   employeeList;
+ 
 
-  constructor(public http : HttpClient , private EmployeeService: EmployeeService,public globals: Globals, private router: Router, private route: ActivatedRoute) { }
-  
+  constructor(public http: HttpClient, private EmployeeService: EmployeeService, public globals: Globals, private router: Router, private route: ActivatedRoute) { }
+
   ngOnInit() {
     debugger
 
@@ -27,8 +28,10 @@ export class EmployeeComponent implements OnInit {
         (error) => {
           //alert('error');
         });
+
+   
   }
-  
-  
+
+
 
 }

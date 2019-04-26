@@ -1,7 +1,10 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-//use \Firebase\JWT\JWT;
+
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: *');
+header('Content-Type: application/json');
 
 class Employee extends CI_Controller
 {
@@ -18,6 +21,7 @@ class Employee extends CI_Controller
 	public function insert_data()
 	{
 		$this->load->model('employeemodel');
+		//$data = $this->input->post();
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		$result = $this->employeemodel->insert($data);
 		if ($result) {
@@ -26,16 +30,13 @@ class Employee extends CI_Controller
 	}
 
 
-
-
-
 	public function update()
 	{
 		$EmployeeId = $this->input->get('id');
 		$this->load->model("employeemodel");
-		$data['employee_data'] = $this->employeemodel->fetch_data($EmployeeId);
-		$data['fetch_data'] = $this->employeemodel->fetch();
-		$this->load->view("employee_list", $data);
+		$data= $this->employeemodel->fetch_data($EmployeeId);
+		echo json_encode($data);
+		//$this->load->view("employee_list", $data);
 	}
 
 	public function update_data()
@@ -85,7 +86,7 @@ class Employee extends CI_Controller
 		$id = $this->input->get('id');
 		$result = $this->employeemodel->delete($id);
 		if ($result) {
-			redirect("employee");
+			redirect("http://localhost:4200/employee/list");
 		}
 	}
 }

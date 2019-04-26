@@ -14,6 +14,8 @@ export class EmployeeListComponent implements OnInit {
      public employees = [];
      employeeData;
      employeeEntity;
+     
+    
     
 
   constructor(private router: Router,private EmployeeService: EmployeeService,public globals: Globals,private route: ActivatedRoute) { }
@@ -32,6 +34,20 @@ export class EmployeeListComponent implements OnInit {
           //alert('error');
         });
     }
+
+    fetch_employee(id){
+
+    this.EmployeeService.fetch_empolyee(id)
+    .then((data) => {
+      this.employeeEntity = data;
+      console.log(this.employeeEntity);
+    },
+      (error) => {
+        //alert('error');
+      });
+    }
+
+
 
   }
 
