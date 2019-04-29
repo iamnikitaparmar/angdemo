@@ -28,7 +28,6 @@ export class EmployeeComponent implements OnInit {
         (error) => {
           //alert('error');
         });
-
    
   }
 

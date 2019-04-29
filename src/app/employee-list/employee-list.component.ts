@@ -4,28 +4,45 @@ import { EmployeeService } from '../services/employee.service';
 import { Globals } from '../globals';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
-  
+
 })
 export class EmployeeListComponent implements OnInit {
-     public employees = [];
-     employeeData;
-     employeeEntity;
-     
-    
-    
+  public employees = [];
+  employeeData;
+  employeeEntity;
+  header;
+  button;
 
-  constructor(private router: Router,private EmployeeService: EmployeeService,public globals: Globals,private route: ActivatedRoute) { }
-    ngOnInit() {
-      debugger
-      this.employeeEntity={};
-    }
-    InsertEmployee(employeeForm){
-      
-      this.EmployeeService.InsertEmployee(this.employeeEntity)
+  constructor(private router: Router, private EmployeeService: EmployeeService, public globals: Globals, private route: ActivatedRoute) { }
+  ngOnInit() {
+    debugger
+    this.employeeEntity = {};
+    this.header ='Add';
+    this.button ='Add';
+
+    let id = this.route.snapshot.paramMap.get('id');
+    if(id){
+      this.header ='Edit';
+      this.button ='Edit';
+    this.EmployeeService.fetchEmpolyee(id)
+      .then((data) => {
+        this.employeeEntity = data;
+        console.log(this.employeeEntity);
+      },
+        (error) => {
+          //alert('error');
+        });
+      }
+  }
+  InsertEmployee(employeeForm) {
+    debugger
+    
+    this.EmployeeService.InsertEmployee(this.employeeEntity)
       .then((data) => {
         this.employeeData = data;
         console.log(this.employeeData);
@@ -33,22 +50,12 @@ export class EmployeeListComponent implements OnInit {
         (error) => {
           //alert('error');
         });
-    }
-
-    fetch_employee(id){
-
-    this.EmployeeService.fetch_empolyee(id)
-    .then((data) => {
-      this.employeeEntity = data;
-      console.log(this.employeeEntity);
-    },
-      (error) => {
-        //alert('error');
-      });
-    }
-
-
-
   }
+
+
+
+
+
+}
 
 

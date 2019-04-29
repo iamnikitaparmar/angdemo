@@ -1,8 +1,17 @@
-
+<h1>{{ header }} Employee</h1>
 <form role="form" #employeeForm="ngForm" (ngSubmit)="InsertEmployee(employeeForm)">
 
     <label>Employee Name</label>
     <input type="text" #EmployeeName="ngModel" [(ngModel)]="employeeEntity.EmployeeName" name="EmployeeName"><br>
+    <span class="error_span"
+        *ngIf="(EmployeeName.dirty && EmployeeName.invalid) || (EmployeeName.pristine && submitted)"></span>
+    <span *ngIf="EmployeeName.errors.required || (EmployeeName.pristine && submitted)">Please
+        enter EmployeeName</span>
+    <span class="error_span" *ngIf="EmployeeName.errors && EmployeeName.errors.pattern">
+        Please enter a valid EmployeeName
+    </span>
+    </span>
+
 
     <label>Joining Date</label>
     <input type="date" #JoiningDate="ngModel" [(ngModel)]="employeeEntity.JoiningDate" name="JoiningDate"><br>
@@ -25,6 +34,6 @@
     <label>IsActive</label>
     <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="yes"> Yes
     <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="no"> No<br>
-
-    <button type="submit"><span>Submit</span></button>
+    <br>
+    <button type="submit"><span>{{button}}</span></button>
 </form>
