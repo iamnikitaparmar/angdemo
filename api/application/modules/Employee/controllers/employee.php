@@ -22,7 +22,7 @@ class Employee extends CI_Controller
 	{
 		$this->load->model('employeemodel');
 		$data = json_decode(trim(file_get_contents('php://input')), true);
-		if($data['EmployeeId']>0){
+		if(!empty($data['EmployeeId'])){
 			$result = $this->employeemodel->update($data);
 		}else{
 			$result = $this->employeemodel->insert($data);

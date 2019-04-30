@@ -15,33 +15,46 @@ export class EmployeeListComponent implements OnInit {
   public employees = [];
   employeeData;
   employeeEntity;
+  submitted;
   header;
   button;
+
 
   constructor(private router: Router, private EmployeeService: EmployeeService, public globals: Globals, private route: ActivatedRoute) { }
   ngOnInit() {
     debugger
     this.employeeEntity = {};
-    this.header ='Add';
-    this.button ='Add';
+    this.header = 'Add';
+    this.button = 'Add';
+
 
     let id = this.route.snapshot.paramMap.get('id');
-    if(id){
-      this.header ='Edit';
-      this.button ='Edit';
-    this.EmployeeService.fetchEmpolyee(id)
-      .then((data) => {
-        this.employeeEntity = data;
-        console.log(this.employeeEntity);
-      },
-        (error) => {
-          //alert('error');
-        });
-      }
+    if (id) {
+      this.header = 'Edit';
+      this.button = 'Edit';
+      this.EmployeeService.fetchEmpolyee(id)
+        .then((data) => {
+          this.employeeEntity = data;
+          console.log(this.employeeEntity);
+        },
+          (error) => {
+            //alert('error');
+           
+
+          });
+    }
   }
+
+
   InsertEmployee(employeeForm) {
     debugger
-    
+
+    if (employeeForm.valid) {
+     // console.log('true');
+    } else {
+      //console.log('false');
+    }
+
     this.EmployeeService.InsertEmployee(this.employeeEntity)
       .then((data) => {
         this.employeeData = data;

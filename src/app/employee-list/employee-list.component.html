@@ -1,36 +1,77 @@
 <h1>{{ header }} Employee</h1>
 <form role="form" #employeeForm="ngForm" (ngSubmit)="InsertEmployee(employeeForm)">
+<!-- <form role="form" #employeeForm="ngForm" (ngSubmit)="employeeForm.form.valid && InsertEmployee(employeeForm)"> -->
 
     <label>Employee Name</label>
-    <input type="text" #EmployeeName="ngModel" [(ngModel)]="employeeEntity.EmployeeName" name="EmployeeName"><br>
-    <span class="error_span"
-        *ngIf="(EmployeeName.dirty && EmployeeName.invalid) || (EmployeeName.pristine && submitted)"></span>
-    <span *ngIf="EmployeeName.errors.required || (EmployeeName.pristine && submitted)">Please
-        enter EmployeeName</span>
-    <span class="error_span" *ngIf="EmployeeName.errors && EmployeeName.errors.pattern">
-        Please enter a valid EmployeeName
-    </span>
-    </span>
+    <input type="text" #EmployeeName="ngModel" [(ngModel)]="employeeEntity.EmployeeName" name="EmployeeName"
+        pattern="[a-zA-Z',&.$\ ]{2,}" maxlength="30" required><br>
 
-
+    <span *ngIf="employeeForm.submitted && EmployeeName.invalid">
+        <span *ngIf="EmployeeName.errors.required ">
+            Employee name is required
+        </span>
+        <span *ngIf=" EmployeeName.errors.pattern || EmployeeName.errors.maxlength  ">
+            Employee name is not valid
+        </span>
+    </span>
+    <br>
     <label>Joining Date</label>
-    <input type="date" #JoiningDate="ngModel" [(ngModel)]="employeeEntity.JoiningDate" name="JoiningDate"><br>
+    <input type="date" #JoiningDate="ngModel" [(ngModel)]="employeeEntity.JoiningDate" name="JoiningDate" required><br>
 
+    <span *ngIf="employeeForm.submitted && JoiningDate.invalid">
+        <span *ngIf="JoiningDate.errors.required  ">
+            Joining Date is required
+        </span>
+    </span>
+    <br>
     <label>BirthDate</label>
-    <input type="date" #BirthDate="ngModel" [(ngModel)]="employeeEntity.BirthDate" name="BirthDate"><br>
+    <input type="date" #BirthDate="ngModel" [(ngModel)]="employeeEntity.BirthDate" name="BirthDate" required><br>
 
+    <span *ngIf="employeeForm.submitted && BirthDate.invalid">
+        <span *ngIf="BirthDate.errors.required  ">
+            BirthDate is required
+        </span>
+    </span>
+    <br>
     <label>Address</label>
-    <textarea cols="25" rows="5" name="Address" #Address="ngModel" [(ngModel)]="employeeEntity.Address"></textarea><br>
-
+    <textarea cols="25" rows="5" name="Address" #Address="ngModel" [(ngModel)]="employeeEntity.Address"
+        required></textarea><br>
+    <span *ngIf="employeeForm.submitted && Address.invalid">
+        <span *ngIf="Address.errors.required  ">
+            Address is required
+        </span>
+    </span>
+    <br>
     <label>PhoneNo</label>
-    <input type="text" #PhoneNo="ngModel" [(ngModel)]="employeeEntity.PhoneNo" name="PhoneNo"><br>
+    <input type="text" #PhoneNo="ngModel" [(ngModel)]="employeeEntity.PhoneNo" name="PhoneNo" pattern="" required><br>
 
+    <span *ngIf="employeeForm.submitted && PhoneNo.invalid">
+        <span *ngIf="PhoneNo.errors.required  ">
+            PhoneNo is required
+        </span>
+        <span *ngIf="PhoneNo.errors.pattern  ">
+                PhoneNo is not valid
+            </span>
+    </span>
+    <br>
     <label>Designation</label>
-    <input type="text" #Designation="ngModel" [(ngModel)]="employeeEntity.Designation" name="Designation"><br>
+    <input type="text" #Designation="ngModel" [(ngModel)]="employeeEntity.Designation" name="Designation" required><br>
 
+    <span *ngIf="employeeForm.submitted && Designation.invalid">
+        <span *ngIf="Designation.errors.required  ">
+            Designation is required
+        </span>
+    </span>
+    <br>
     <label>EmailId</label>
-    <input type="text" #EmailId="ngModel" [(ngModel)]="employeeEntity.EmailId" name="EmailId"><br>
+    <input type="email" #EmailId="ngModel" [(ngModel)]="employeeEntity.EmailId" name="EmailId" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required><br>
 
+    <span *ngIf="employeeForm.submitted && EmailId.invalid">
+        <span *ngIf="EmailId.errors.required  ">
+            EmailId is required
+        </span>
+    </span>
+    <br>
     <label>IsActive</label>
     <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="yes"> Yes
     <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="no"> No<br>
