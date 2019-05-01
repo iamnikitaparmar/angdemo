@@ -1,5 +1,5 @@
 <h1>{{ header }} Employee</h1>
-<form role="form" #employeeForm="ngForm" (ngSubmit)="InsertEmployee(employeeForm)">
+<form role="form" #employeeForm="ngForm" (ngSubmit)="employeeForm.form.valid && InsertEmployee(employeeForm)">
 <!-- <form role="form" #employeeForm="ngForm" (ngSubmit)="employeeForm.form.valid && InsertEmployee(employeeForm)"> -->
 
     <label>Employee Name</label>
@@ -67,14 +67,17 @@
     <input type="email" #EmailId="ngModel" [(ngModel)]="employeeEntity.EmailId" name="EmailId" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required><br>
 
     <span *ngIf="employeeForm.submitted && EmailId.invalid">
-        <span *ngIf="EmailId.errors.required  ">
+        <span *ngIf="EmailId.errors.required">
             EmailId is required
+        </span>
+        <span *ngIf="EmailId.errors.pattern">
+            Please enter valid email 
         </span>
     </span>
     <br>
     <label>IsActive</label>
-    <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="yes"> Yes
-    <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="no"> No<br>
+    <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="1"> Yes
+    <input type="radio" #IsActive="ngModel" [(ngModel)]="employeeEntity.IsActive" name="IsActive" value="0"> No<br>
     <br>
     <button type="submit"><span>{{button}}</span></button>
 </form>

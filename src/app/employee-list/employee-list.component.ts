@@ -50,19 +50,17 @@ export class EmployeeListComponent implements OnInit {
     debugger
 
     if (employeeForm.valid) {
-     // console.log('true');
-    } else {
-      //console.log('false');
-    }
-
-    this.EmployeeService.InsertEmployee(this.employeeEntity)
+      this.EmployeeService.InsertEmployee(this.employeeEntity)
       .then((data) => {
         this.employeeData = data;
         console.log(this.employeeData);
+        this.router.navigate(['/employee/list']);
       },
         (error) => {
           //alert('error');
         });
+    } else {
+    }
   }
 
 
