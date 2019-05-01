@@ -8,21 +8,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeService } from './services/employee.service';
 import { Globals } from './globals';
+import { ProjectComponent } from './project/project.component';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectService} from './services/project.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    ProjectComponent,
+    ProjectListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
-  providers: [Globals,EmployeeService],
+  providers: [Globals,EmployeeService,ProjectService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component,NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,14 +16,27 @@ import { Globals } from './globals';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeService } from './services/employee.service';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { ProjectComponent } from './project/project.component';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectService } from './services/project.service';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: AppComponent,
+    children: [
 
- 
-  { path: 'employee/add', component: EmployeeListComponent },
-  { path: 'employee/edit/:id', component: EmployeeListComponent },
-  { path: 'employee/list', component: EmployeeComponent },
- 
+      { path: 'employee/add', component: EmployeeListComponent },
+      { path: 'employee/edit/:id', component: EmployeeListComponent },
+      { path: 'employee/list', component: EmployeeComponent },
+
+      { path: 'project/add', component: ProjectComponent },
+      { path: 'project/edit/:id', component: ProjectComponent },
+      { path: 'project/list', component: ProjectListComponent },
+
+    ]
+  }
 ];
 
 @NgModule({

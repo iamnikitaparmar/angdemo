@@ -1,6 +1,5 @@
 <h1>{{ header }} Employee</h1>
 <form role="form" #employeeForm="ngForm" (ngSubmit)="employeeForm.form.valid && InsertEmployee(employeeForm)">
-<!-- <form role="form" #employeeForm="ngForm" (ngSubmit)="employeeForm.form.valid && InsertEmployee(employeeForm)"> -->
 
     <label>Employee Name</label>
     <input type="text" #EmployeeName="ngModel" [(ngModel)]="employeeEntity.EmployeeName" name="EmployeeName"
@@ -43,7 +42,7 @@
     </span>
     <br>
     <label>PhoneNo</label>
-    <input type="text" #PhoneNo="ngModel" [(ngModel)]="employeeEntity.PhoneNo" name="PhoneNo" pattern="" required><br>
+    <input type="tel" #PhoneNo="ngModel" [(ngModel)]="employeeEntity.PhoneNo" name="PhoneNo" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required><br>
 
     <span *ngIf="employeeForm.submitted && PhoneNo.invalid">
         <span *ngIf="PhoneNo.errors.required  ">

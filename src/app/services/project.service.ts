@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-//import { IEmployee } from '../employee';
 
 import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { identifierModuleUrl } from '@angular/compiler';
-//import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
+export class ProjectService {
+
   constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
-  InsertEmployee(employeeEntity) {
+  Insertproject(projectEntity) {
     debugger
   
     let promise = new Promise((resolve, reject) => {
-      this.http.post(this.globals.baseAPIUrl + 'Employee/insert_data', employeeEntity)
+      this.http.post(this.globals.baseAPIUrl + 'project/insert_data', projectEntity)
         .toPromise()
         .then(
           res => { // Success
@@ -33,11 +32,10 @@ export class EmployeeService {
     return promise;
   }
 
-
-  getId(employeeEntity){
+  getId(projectEntity){
    
     let promise = new Promise((resolve, reject) => {
-      this.http.post(this.globals.baseAPIUrl + 'Employee/update_data', employeeEntity)
+      this.http.post(this.globals.baseAPIUrl + 'Project/update_data', projectEntity)
         .toPromise()
         .then(
           res => { // Success
@@ -50,33 +48,11 @@ export class EmployeeService {
         );
     });
   }
-  
 
-  // UpdateEmployee(employeeEntity) {
-  //   debugger
-  //   if(id){
-  //   let promise = new Promise((resolve, reject) => {
-  //     this.http.post(this.globals.baseAPIUrl + 'Employee/update_data?id=' + id ,employeeEntity)
-  //       .toPromise()
-  //       .then(
-  //         res => { // Success
-  //           resolve(res);
-  //         },
-  //         msg => { // Error
-  //           reject(msg);
-            
-  //         }
-  //       );
-  //   });
-  // }
-  //   return promise;
-  // }
-
-
-  getemployee() {
+  getproject() {
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'employee/list')
+      this.http.get(this.globals.baseAPIUrl + 'project/list')
         .toPromise()
         .then(
           res => { // Success 
@@ -92,11 +68,11 @@ export class EmployeeService {
     return promise;
   }
 
-  fetchEmpolyee(id){
+  fetchProject(id){
 
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'employee/update?id=' + id)
+      this.http.get(this.globals.baseAPIUrl + 'project/update?id=' + id)
         .toPromise()
         .then(
           res => { // Success 
@@ -111,6 +87,6 @@ export class EmployeeService {
     });
     return promise;
 }
-  }
 
 
+}
