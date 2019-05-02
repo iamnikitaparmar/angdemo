@@ -9,15 +9,15 @@ import { identifierModuleUrl } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService {
+export class TaskService {
 
   constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
-  Insertproject(projectEntity) {
+  Inserttask(taskEntity) {
     debugger
   
     let promise = new Promise((resolve, reject) => {
-      this.http.post(this.globals.baseAPIUrl + 'Project/insert_data', projectEntity)
+      this.http.post(this.globals.baseAPIUrl + 'Task/insert_data', taskEntity)
         .toPromise()
         .then(
           res => { // Success
@@ -32,10 +32,10 @@ export class ProjectService {
     return promise;
   }
 
-  getId(projectEntity){
+  getId(taskEntity){
    
     let promise = new Promise((resolve, reject) => {
-      this.http.post(this.globals.baseAPIUrl + 'Project/update_data', projectEntity)
+      this.http.post(this.globals.baseAPIUrl + 'Task/update_data', taskEntity)
         .toPromise()
         .then(
           res => { // Success
@@ -49,10 +49,10 @@ export class ProjectService {
     });
   }
 
-  getproject() {
+  getTask() {
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'project/list')
+      this.http.get(this.globals.baseAPIUrl + 'task/list')
         .toPromise()
         .then(
           res => { // Success 
@@ -68,11 +68,11 @@ export class ProjectService {
     return promise;
   }
 
-  fetchProject(id){
+  fetchTask(id){
 
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'project/update?id=' + id)
+      this.http.get(this.globals.baseAPIUrl + 'task/update?id=' + id)
         .toPromise()
         .then(
           res => { // Success 

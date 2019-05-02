@@ -12,6 +12,8 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectService} from './services/project.service';
 import { RouterModule } from '@angular/router';
+import { TaskComponent } from './task/task.component';
+import { TaskListComponent } from './task-list/task-list.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { RouterModule } from '@angular/router';
     EmployeeComponent,
     EmployeeListComponent,
     ProjectComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    TaskComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,

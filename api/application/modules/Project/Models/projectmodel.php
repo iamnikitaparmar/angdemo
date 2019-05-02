@@ -1,8 +1,8 @@
 <?php
 
-class Projectmodel extends CI_Controller
+class Projectmodel extends CI_Model
 {
-    public function insert($data)
+	public function insert($data)
 	{
 		if ($data) {
 			$post_data = $data;
@@ -10,7 +10,7 @@ class Projectmodel extends CI_Controller
 			$insertdata = array(
 				"ProjectName" => trim($post_data['ProjectName']),
 				"Description" => trim($post_data['Description']),
-				"IsActive" => trim($post_data['IsActive'])
+				"IsActive" => trim($post_data['IsActive']),
 			);
 
 			$res = $this->db->insert('tblprojects', $insertdata);
@@ -22,9 +22,9 @@ class Projectmodel extends CI_Controller
 		} else {
 			return false;
 		}
-    }
-    
-    public function fetch()
+	}
+
+	public function fetch()
 	{
 		$this->db->select('*');
 		$query = $this->db->get('tblprojects');
@@ -32,9 +32,9 @@ class Projectmodel extends CI_Controller
 			return $query;
 		}
 		return $query;
-    }
-    
-    public function fetch_data($id = NULL)
+	}
+
+	public function fetch_data($id = NULL)
 	{
 
 		if ($id) {
@@ -52,17 +52,17 @@ class Projectmodel extends CI_Controller
 		} else {
 			return false;
 		}
-    }
-    
+	}
 
-    public function update($data)
+
+	public function update($data)
 	{
 		if ($data) {
 			$post_data = $data;
 
 			$updatetdata = array(
 
-                "ProjectName" => trim($post_data['ProjectName']),
+				"ProjectName" => trim($post_data['ProjectName']),
 				"Description" => trim($post_data['Description']),
 				"IsActive" => trim($post_data['IsActive'])
 			);
@@ -78,9 +78,9 @@ class Projectmodel extends CI_Controller
 		} else {
 			return false;
 		}
-    }
-    
-    public function delete($id)
+	}
+
+	public function delete($id)
 	{
 
 		if ($id) {

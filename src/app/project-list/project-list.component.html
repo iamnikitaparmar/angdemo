@@ -1,3 +1,22 @@
-<p>
-  project-list works!
-</p>
+ 
+<h1>Project</h1>
+<a href="http://localhost:4200/project/add">Add Employee</a>
+<br><br>
+
+<table border="1">
+    <tr>
+        <th>ProjectId</th>
+        <th>ProjectName</th>
+        <th>Description</th>
+        <th>IsActive</th>
+        <th>Change</th>
+       
+    </tr>
+    <tr *ngFor="let project of projectList">
+        <td>{{project.ProjectId}} </td>
+        <td>{{project.ProjectName}} </td>
+        <td>{{project.Description}} </td>
+        <td>{{project.IsActive}} </td>
+        <td><a href="http://localhost:4200/project/edit/{{project.ProjectId}}">Update</a><a href="http://localhost/angdemo/api/project/delete?id={{project.ProjectId}}">Delete</a></td>
+    </tr>
+</table>

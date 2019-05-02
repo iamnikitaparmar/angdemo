@@ -12,6 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ProjectComponent implements OnInit {
   projectData;
   projectEntity;
+  submitted;
+  header;
+  button;
  
 
   constructor(private router: Router, private ProjectService: ProjectService, public globals: Globals, private route: ActivatedRoute) { }
@@ -19,9 +22,13 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     debugger
     this.projectEntity = {};
+    this.header = 'Add';
+    this.button = 'Add';
 
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      this.header = 'Edit';
+      this.button = 'Edit';
      
       this.ProjectService.fetchProject(id)
         .then((data) => {

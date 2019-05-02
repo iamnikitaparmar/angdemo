@@ -1,9 +1,21 @@
-<h1>{{ header }} Project</h1>
+<h1>{{ header }} Task</h1>
+
 <form role="form" #projectForm="ngForm" (ngSubmit)="projectForm.form.valid && Insertproject(projectForm)">
 
-    <label>Project Name</label>
-    <input type="text" #ProjectName="ngModel" [(ngModel)]="projectEntity.ProjectName" name="ProjectName"
-        pattern="[a-zA-Z',&.$\ ]{2,}" maxlength="30" required><br>
+    <label>Employee Name</label>
+    
+
+
+    <!-- <select class='select-option' required class="form-control" #EmployeeId="ngModel"
+    [(ngModel)]="taskEntity.EmployeeId" name="EmployeeId"
+    [ngClass]="{red_border: (EmployeeId.dirty && EmployeeId.invalid) || (EmployeeId.pristine && submitted)}">
+    <option value="" ngSelected='taskEntity.EmployeeId==""'>Select</option>
+    <ng-container *ngFor='let jobtitle of jobtitleList'>
+      <option class='option' [value]="jobtitle.EmployeeId" ngSelected="taskEntity.EmployeeId==jobtitle.EmployeeId">
+        {{jobtitle.JobTitle}}</option>
+    </ng-container>
+  </select> -->
+
 
     <span *ngIf="projectForm.submitted && ProjectName.invalid">
         <span *ngIf="ProjectName.errors.required ">

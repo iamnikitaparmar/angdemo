@@ -1,0 +1,26 @@
+ 
+<h1>Task</h1>
+<a href="http://localhost:4200/task/add">Add Task</a>
+<br><br>
+
+<table border="1">
+    <tr>
+        <th>DailyTaskId</th>
+        <th>EmployeeId</th>
+        <th>ProjectId</th>
+        <th>TaskDate</th>
+        <th>TaskDescription</th>
+        <th>IsActive</th>
+        <th>Change</th>
+       
+    </tr>
+    <tr *ngFor="let task of taskList">
+        <td>{{task.DailyTaskId}} </td>
+        <td>{{task.EmployeeId}} </td>
+        <td>{{task.ProjectId}} </td>
+        <td>{{task.TaskDate}} </td>
+        <td>{{task.TaskDescription}} </td>
+        <td>{{task.IsActive}} </td>
+        <td><a href="http://localhost:4200/task/edit/{{task.DailyTaskId}}">Update</a><a href="http://localhost/angdemo/api/task/delete?id={{task.DailyTaskId}}">Delete</a></td>
+    </tr>
+</table>

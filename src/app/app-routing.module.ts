@@ -20,6 +20,8 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectService } from './services/project.service';
 import { AppComponent } from './app.component';
+import { TaskComponent } from './task/task.component';
+import { TaskListComponent } from './task-list/task-list.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,10 @@ const routes: Routes = [
       { path: 'project/add', component: ProjectComponent },
       { path: 'project/edit/:id', component: ProjectComponent },
       { path: 'project/list', component: ProjectListComponent },
+
+      { path: 'task/add', component: TaskComponent },
+      { path: 'task/edit/:id', component: TaskComponent },
+      { path: 'task/list', component: TaskListComponent },
 
     ]
   }
