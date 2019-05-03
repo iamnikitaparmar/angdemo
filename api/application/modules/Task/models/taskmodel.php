@@ -2,7 +2,7 @@
 
 class Taskmodel extends CI_Model
 {
-    public function insert($data)
+	public function insert($data)
 	{
 		if ($data) {
 			$post_data = $data;
@@ -10,9 +10,9 @@ class Taskmodel extends CI_Model
 			$insertdata = array(
 				"EmployeeId" => trim($post_data['EmployeeId']),
 				"ProjectId" => trim($post_data['ProjectId']),
-                "TaskDate" => trim($post_data['TaskDate']),
-                "TaskDescription" => trim($post_data['TaskDescription']),
-                "IsActive"  => trim($post_data['IsActive']),
+				"TaskDate" => trim($post_data['TaskDate']),
+				"TaskDescription" => trim($post_data['TaskDescription']),
+				"IsActive"  => trim($post_data['IsActive']),
 			);
 
 			$res = $this->db->insert('tbldailytask', $insertdata);
@@ -24,19 +24,38 @@ class Taskmodel extends CI_Model
 		} else {
 			return false;
 		}
-    }
-    
-    public function fetch()
+	}
+
+	public function fetch()
 	{
-		$this->db->select('*');
-		$query = $this->db->get('tbldailytask');
+	$this->db->select('dt.DailyTaskId,dt.TaskDate,dt.TaskDescription,dt.IsActive,e.EmployeeId,e.EmployeeName,p.ProjectId,p.ProjectName', false);
+	$this->db->from('tbldailytask  as  dt');
+	$this->db->join('tblemployees  as e', 'dt.EmployeeId = e.EmployeeId','right outer');
+	$this->db->join('tblprojects as p', 'dt.ProjectId = p.ProjectId');
+
+	$query = $this->db->get();
 		if ($query) {
 			return $query;
 		}
 		return $query;
-    }
-    
-    public function fetch_data($id = NULL)
+	}
+
+	// public function getall()
+	// {
+	// $this->db->select('dt.DailyTaskId,dt.TaskDate,dt.TaskDescription,dt.IsActive,e.EmployeeId,e.EmployeeName,p.ProjectId,p.ProjectName', false);
+	// $this->db->from('tbldailytask  as  dt');
+	// $this->db->join('tblemployees  as e');
+	// $this->db->join('tblprojects as p');
+
+	// $query = $this->db->get();
+	// 	if ($query) {
+	// 		return $query;
+	// 	}
+	// 	return $query;
+	// }
+
+
+	public function fetch_data($id = NULL)
 	{
 
 		if ($id) {
@@ -54,9 +73,9 @@ class Taskmodel extends CI_Model
 		} else {
 			return false;
 		}
-    }
-    
-    public function update($data)
+	}
+
+	public function update($data)
 	{
 		if ($data) {
 			$post_data = $data;
@@ -65,9 +84,9 @@ class Taskmodel extends CI_Model
 
 				"EmployeeId" => trim($post_data['EmployeeId']),
 				"ProjectId" => trim($post_data['ProjectId']),
-                "TaskDate" => trim($post_data['TaskDate']),
-                "TaskDescription" => trim($post_data['TaskDescription']),
-                "IsActive"  => trim($post_data['IsActive']),
+				"TaskDate" => trim($post_data['TaskDate']),
+				"TaskDescription" => trim($post_data['TaskDescription']),
+				"IsActive"  => trim($post_data['IsActive']),
 			);
 
 
@@ -81,9 +100,9 @@ class Taskmodel extends CI_Model
 		} else {
 			return false;
 		}
-    }
-    
-    public function delete($id)
+	}
+
+	public function delete($id)
 	{
 
 		if ($id) {
@@ -98,5 +117,4 @@ class Taskmodel extends CI_Model
 			return false;
 		}
 	}
-
 }

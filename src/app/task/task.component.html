@@ -1,48 +1,61 @@
 <h1>{{ header }} Task</h1>
 
-<form role="form" #projectForm="ngForm" (ngSubmit)="projectForm.form.valid && Insertproject(projectForm)">
+<form role="form" #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && Inserttask(taskForm)">
 
-    <label>Employee Name</label>
-    
+  <label>Employee Name</label>
 
-
-    <!-- <select class='select-option' required class="form-control" #EmployeeId="ngModel"
-    [(ngModel)]="taskEntity.EmployeeId" name="EmployeeId"
-    [ngClass]="{red_border: (EmployeeId.dirty && EmployeeId.invalid) || (EmployeeId.pristine && submitted)}">
-    <option value="" ngSelected='taskEntity.EmployeeId==""'>Select</option>
-    <ng-container *ngFor='let jobtitle of jobtitleList'>
-      <option class='option' [value]="jobtitle.EmployeeId" ngSelected="taskEntity.EmployeeId==jobtitle.EmployeeId">
-        {{jobtitle.JobTitle}}</option>
+  <select #EmployeeId="ngModel" [(ngModel)]="taskEntity.EmployeeId" name="EmployeeId">
+    <!-- <option value="" ngSelected='taskEntity.EmployeeId==""'>Select</option> -->
+    <ng-container *ngFor='let ts of taskEntity'>
+      <option [value]="ts.EmployeeId">{{ts.EmployeeName}}</option>
     </ng-container>
-  </select> -->
+  </select>
+
+ 
+
+  <!-- <span *ngIf="taskForm.submitted && taskName.invalid">
+    <span *ngIf="taskName.errors.required ">
+      task name is required
+    </span>
+    <span *ngIf=" taskName.errors.pattern || taskName.errors.maxlength  ">
+      task name is not valid
+    </span>
+  </span>
+  <br> -->
+  <br>
+  <label>Project Name</label>
+  <select #ProjectId="ngModel" [(ngModel)]="taskEntity.ProjectId" name="ProjectId">
+    <!-- <option value="" ngSelected='taskEntity.EmployeeId==""'>Select</option> -->
+    <ng-container *ngFor='let ts of taskEntity'>
+      <option [value]="ts.ProjectId">{{ts.ProjectName}}</option>
+    </ng-container>
+  </select>
+  <br>
+  <label>TaskDate</label>
+  <input type="date" #TaskDate="ngModel" [(ngModel)]="taskEntity.TaskDate" name="TaskDate" required><br>
+
+  <span *ngIf="taskForm.submitted && TaskDate.invalid">
+    <span *ngIf="TaskDate.errors.required">
+      TaskDate is required
+    </span>
+  </span>
+  <br>
+
+  <label>TaskDescription</label>
+  <textarea cols="25" rows="5" name="TaskDescription" #TaskDescription="ngModel"
+    [(ngModel)]="taskEntity.TaskDescription" required></textarea><br>
+  <span *ngIf="taskForm.submitted && TaskDescription.invalid">
+    <span *ngIf="TaskDescription.errors.required  ">
+      TaskDescription is required
+    </span>
+  </span>
+  <br>
 
 
-    <span *ngIf="projectForm.submitted && ProjectName.invalid">
-        <span *ngIf="ProjectName.errors.required ">
-          Project name is required
-        </span>
-        <span *ngIf=" ProjectName.errors.pattern || ProjectName.errors.maxlength  ">
-          Project name is not valid
-        </span>
-    </span>
-    <br>
-   
-   
-    <label>Description</label>
-    <textarea cols="25" rows="5" name="Description" #Description="ngModel" [(ngModel)]="projectEntity.Description"
-        required></textarea><br>
-    <span *ngIf="projectForm.submitted && Description.invalid">
-        <span *ngIf="Description.errors.required  ">
-          Description is required
-        </span>
-    </span>
-    <br>
-    
-    
-    
-    <label>IsActive</label>
-    <input type="radio" #IsActive="ngModel" [(ngModel)]="projectEntity.IsActive" name="IsActive" value="1"> Yes
-    <input type="radio" #IsActive="ngModel" [(ngModel)]="projectEntity.IsActive" name="IsActive" value="0"> No<br>
-    <br>
-    <button type="submit"><span>{{button}}</span></button>
+
+  <label>IsActive</label>
+  <input type="radio" #IsActive="ngModel" [(ngModel)]="taskEntity.IsActive" name="IsActive" value="1"> Yes
+  <input type="radio" #IsActive="ngModel" [(ngModel)]="taskEntity.IsActive" name="IsActive" value="0"> No<br>
+  <br>
+  <button type="submit"><span>{{button}}</span></button>
 </form>

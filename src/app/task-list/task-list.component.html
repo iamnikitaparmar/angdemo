@@ -6,8 +6,8 @@
 <table border="1">
     <tr>
         <th>DailyTaskId</th>
-        <th>EmployeeId</th>
-        <th>ProjectId</th>
+        <th>EmployeeName</th>
+        <th>ProjectName</th>
         <th>TaskDate</th>
         <th>TaskDescription</th>
         <th>IsActive</th>
@@ -16,8 +16,8 @@
     </tr>
     <tr *ngFor="let task of taskList">
         <td>{{task.DailyTaskId}} </td>
-        <td>{{task.EmployeeId}} </td>
-        <td>{{task.ProjectId}} </td>
+        <td>{{task.EmployeeName}} </td>
+        <td>{{task.ProjectName}} </td>
         <td>{{task.TaskDate}} </td>
         <td>{{task.TaskDescription}} </td>
         <td>{{task.IsActive}} </td>

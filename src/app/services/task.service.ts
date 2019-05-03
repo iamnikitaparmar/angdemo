@@ -68,6 +68,25 @@ export class TaskService {
     return promise;
   }
 
+  // getselectedTask() {
+  //   debugger
+  //   let promise = new Promise((resolve, reject) => {
+  //     this.http.get(this.globals.baseAPIUrl + 'task/selectlist')
+  //       .toPromise()
+  //       .then(
+  //         res => { // Success 
+  //           resolve(res);
+  //         },
+  //         msg => { // Error
+  //           reject(msg);
+
+  //           this.router.navigate(['/pagenotfound']);
+  //         }
+  //       );
+  //   });
+  //   return promise;
+  // }
+
   fetchTask(id){
 
     debugger

@@ -25,6 +25,15 @@ export class TaskComponent implements OnInit {
     this.header = 'Add';
     this.button = 'Add';
 
+    this.TaskService.getTask()
+    .then((data) => {
+      this.taskEntity = data;
+      console.log(this.taskEntity);
+    },
+      (error) => {
+        //alert('error');
+      });
+
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.header = 'Edit';

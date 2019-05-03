@@ -15,6 +15,14 @@ class Task extends CI_Controller
 		echo json_encode($res);
 	}
 
+	// public function selectlist()
+	// {
+	// 	$this->load->model('taskmodel');
+	// 	$data = $this->taskmodel->getall();
+	// 	$res = $data->result();
+	// 	echo json_encode($res);
+	// }
+
 	public function insert_data()
 	{
 		$this->load->model('taskmodel');
