@@ -3,33 +3,31 @@
 <form role="form" #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && Inserttask(taskForm)">
 
   <label>Employee Name</label>
-
-  <select #EmployeeId="ngModel" [(ngModel)]="taskEntity.EmployeeId" name="EmployeeId">
-    <!-- <option value="" ngSelected='taskEntity.EmployeeId==""'>Select</option> -->
-    <ng-container *ngFor='let ts of taskEntity'>
-      <option [value]="ts.EmployeeId">{{ts.EmployeeName}}</option>
+  <select #EmployeeId="ngModel" [(ngModel)]="taskEntity.EmployeeId" name="EmployeeId" required>
+     <ng-container *ngFor='let ts of employeeList'>
+      <option [value]="ts.EmployeeId"  ngSelected="taskEntity.EmployeeId==ts.EmployeeId" >{{ts.EmployeeName}}</option>
     </ng-container>
   </select>
 
- 
-
-  <!-- <span *ngIf="taskForm.submitted && taskName.invalid">
-    <span *ngIf="taskName.errors.required ">
-      task name is required
-    </span>
-    <span *ngIf=" taskName.errors.pattern || taskName.errors.maxlength  ">
-      task name is not valid
+  <span *ngIf="taskForm.submitted && EmployeeId.invalid">
+    <span *ngIf="EmployeeId.errors.required ">
+      Employee name is required
     </span>
   </span>
-  <br> -->
   <br>
   <label>Project Name</label>
-  <select #ProjectId="ngModel" [(ngModel)]="taskEntity.ProjectId" name="ProjectId">
-    <!-- <option value="" ngSelected='taskEntity.EmployeeId==""'>Select</option> -->
-    <ng-container *ngFor='let ts of taskEntity'>
+  <select #ProjectId="ngModel" [(ngModel)]="taskEntity.ProjectId" name="ProjectId" required>
+    <ng-container *ngFor='let ts of projectList'>
       <option [value]="ts.ProjectId">{{ts.ProjectName}}</option>
     </ng-container>
   </select>
+
+  <span *ngIf="taskForm.submitted && ProjectId.invalid">
+    <span *ngIf="ProjectId.errors.required ">
+      Employee name is required
+    </span>
+  </span>
+
   <br>
   <label>TaskDate</label>
   <input type="date" #TaskDate="ngModel" [(ngModel)]="taskEntity.TaskDate" name="TaskDate" required><br>

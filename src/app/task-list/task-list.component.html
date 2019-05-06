@@ -21,6 +21,13 @@
         <td>{{task.TaskDate}} </td>
         <td>{{task.TaskDescription}} </td>
         <td>{{task.IsActive}} </td>
-        <td><a href="http://localhost:4200/task/edit/{{task.DailyTaskId}}">Update</a><a href="http://localhost/angdemo/api/task/delete?id={{task.DailyTaskId}}">Delete</a></td>
+        <td>
+            <!-- <a href="http://localhost:4200/task/edit/{{task.DailyTaskId}}">Update</a>
+            <a href="http://localhost/angdemo/api/task/delete?id={{task.DailyTaskId}}">Delete</a> -->
+            <button  routerLink="/task/edit/{{task.DailyTaskId}}">Update</button>   
+            <button data-type="Record" (click)="deleteTask(task)">Delete</button>          
+          
+             
+        </td>
     </tr>
 </table>

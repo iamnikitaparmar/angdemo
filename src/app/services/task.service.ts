@@ -25,7 +25,6 @@ export class TaskService {
           },
           msg => { // Error
             reject(msg);
-            
           }
         );
     });
@@ -68,24 +67,24 @@ export class TaskService {
     return promise;
   }
 
-  // getselectedTask() {
-  //   debugger
-  //   let promise = new Promise((resolve, reject) => {
-  //     this.http.get(this.globals.baseAPIUrl + 'task/selectlist')
-  //       .toPromise()
-  //       .then(
-  //         res => { // Success 
-  //           resolve(res);
-  //         },
-  //         msg => { // Error
-  //           reject(msg);
+  getselectedTask() {
+    debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'task/selectlist')
+        .toPromise()
+        .then(
+          res => { // Success 
+            resolve(res);
+          },
+          msg => { // Error
+            reject(msg);
 
-  //           this.router.navigate(['/pagenotfound']);
-  //         }
-  //       );
-  //   });
-  //   return promise;
-  // }
+            this.router.navigate(['/pagenotfound']);
+          }
+        );
+    });
+    return promise;
+  }
 
   fetchTask(id){
 
@@ -107,5 +106,24 @@ export class TaskService {
     return promise;
 }
 
+
+deleteTask(del) {
+  debugger
+  let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'task/delete?id=' + del)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res);
+        },
+        msg => { // Error
+          reject(msg);
+          //  this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
+        }
+      );
+  });
+  return promise;
+}
 
 }

@@ -40,26 +40,34 @@ class Taskmodel extends CI_Model
 		return $query;
 	}
 
-	// public function getall()
-	// {
-	// $this->db->select('dt.DailyTaskId,dt.TaskDate,dt.TaskDescription,dt.IsActive,e.EmployeeId,e.EmployeeName,p.ProjectId,p.ProjectName', false);
-	// $this->db->from('tbldailytask  as  dt');
-	// $this->db->join('tblemployees  as e');
-	// $this->db->join('tblprojects as p');
+	public function getallemplinselect()
+	{
+	$this->db->select('EmployeeId ,EmployeeName');
+	$query = $this->db->get('tblemployees');
+	$res = $query->result();
+		if ($res) {
+			return $res;
+		}
+		return $res;
+	}
 
-	// $query = $this->db->get();
-	// 	if ($query) {
-	// 		return $query;
-	// 	}
-	// 	return $query;
-	// }
+	public function getallprjinselect()
+	{
+	$this->db->select('ProjectId ,ProjectName');
+	$query = $this->db->get('tblprojects');
+	$res = $query->result();
+		if ($res) {
+			return $res;
+		}
+		return $res;
+	}
 
 
 	public function fetch_data($id = NULL)
 	{
 
 		if ($id) {
-			$this->db->select('*');
+			$this->db->select('DailyTaskId,EmployeeId,ProjectId,TaskDate,TaskDescription,IsActive');
 			$this->db->where('DailyTaskId', $id);
 
 			$result = $this->db->get('tbldailytask');

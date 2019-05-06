@@ -7,25 +7,32 @@ header('Content-Type: application/json');
 
 class Task extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('taskmodel');
+	}
+
+
 	public function list()
 	{
-		$this->load->model('taskmodel');
+		
 		$data = $this->taskmodel->fetch();
 		$res = $data->result();
 		echo json_encode($res);
 	}
 
-	// public function selectlist()
-	// {
-	// 	$this->load->model('taskmodel');
-	// 	$data = $this->taskmodel->getall();
-	// 	$res = $data->result();
-	// 	echo json_encode($res);
-	// }
+	public function selectlist()
+	{
+		
+		$data['employee'] = $this->taskmodel->getallemplinselect();
+		$data['project'] = $this->taskmodel->getallprjinselect();
+		echo json_encode($data);
+	}
 
 	public function insert_data()
 	{
-		$this->load->model('taskmodel');
+		
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		if (!empty($data['DailyTaskId'])) {
 			$result = $this->taskmodel->update($data);
@@ -40,14 +47,14 @@ class Task extends CI_Controller
 	public function update()
 	{
 		$DailyTaskId = $this->input->get('id');
-		$this->load->model("taskmodel");
+		
 		$data = $this->taskmodel->fetch_data($DailyTaskId);
 		echo json_encode($data);
 	}
 
 	public function update_data()
 	{
-		$this->load->model('taskmodel');
+		
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		// $data =$this->input->post();
 		// $data['id'] = $this->input->get('id');
@@ -59,7 +66,7 @@ class Task extends CI_Controller
 
 	public function delete($id = NULL)
 	{
-		$this->load->model('taskmodel');
+		
 		$id = $this->input->get('id');
 		$result = $this->taskmodel->delete($id);
 		if ($result) {

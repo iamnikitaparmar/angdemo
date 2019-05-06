@@ -15,6 +15,8 @@ export class TaskComponent implements OnInit {
   submitted;
   header;
   button;
+  employeeList;
+  projectList;
 
   constructor(private router: Router, private TaskService: TaskService, public globals: Globals, private route: ActivatedRoute) { }
 
@@ -25,10 +27,10 @@ export class TaskComponent implements OnInit {
     this.header = 'Add';
     this.button = 'Add';
 
-    this.TaskService.getTask()
+    this.TaskService.getselectedTask()
     .then((data) => {
-      this.taskEntity = data;
-      console.log(this.taskEntity);
+      this.employeeList = data['employee'];
+      this.projectList = data['project'];
     },
       (error) => {
         //alert('error');

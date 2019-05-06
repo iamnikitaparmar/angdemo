@@ -32,7 +32,7 @@ class Employeemodel extends CI_Model
 
 	public function fetch()
 	{
-		$this->db->select('*');
+		$this->db->select('EmployeeId,EmployeeName,JoiningDate,	BirthDate,Address,PhoneNo,Designation,EmailId,IsActive');
 		$query = $this->db->get('tblemployees');
 		if ($query) {
 			return $query;
@@ -44,7 +44,7 @@ class Employeemodel extends CI_Model
 	{
 
 		if ($id) {
-			$this->db->select('*');
+			$this->db->select('EmployeeId,EmployeeName,JoiningDate,	BirthDate,Address,PhoneNo,Designation,EmailId,IsActive');
 			$this->db->where('EmployeeId', $id);
 
 			$result = $this->db->get('tblemployees');

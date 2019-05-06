@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TaskListComponent implements OnInit {
   taskList;
+  
 
   constructor(public http: HttpClient, private TaskService: TaskService, public globals: Globals, private router: Router, private route: ActivatedRoute) { }
 
@@ -30,4 +31,21 @@ export class TaskListComponent implements OnInit {
         });
   }
 
+  deleteTask(task) {
+    debugger
+          this.TaskService.deleteTask(task)
+            .then((data) => {
+              let index = this.taskList.indexOf(task);
+              if (index != -1) {
+                this.taskList.splice(index, 1);
+              }
+            },
+              (error) => {
+                if (error.text) {
+                 //error
+                }
+              });
+     
+  }
+ 
 }

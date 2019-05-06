@@ -8,10 +8,15 @@ header('Content-Type: application/json');
 
 class Employee extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('employeemodel');
+	}
 
 	public function list()
 	{
-		$this->load->model('employeemodel');
+		
 		$data = $this->employeemodel->fetch();
 		$res = $data->result();
 		echo json_encode($res);
@@ -19,7 +24,7 @@ class Employee extends CI_Controller
 
 	public function insert_data()
 	{
-		$this->load->model('employeemodel');
+		
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		if(!empty($data['EmployeeId'])){
 			$result = $this->employeemodel->update($data);
@@ -35,7 +40,7 @@ class Employee extends CI_Controller
 	public function update()
 	{
 		$EmployeeId = $this->input->get('id');
-		$this->load->model("employeemodel");
+		
 		$data= $this->employeemodel->fetch_data($EmployeeId);
 		echo json_encode($data);
 		
@@ -43,7 +48,7 @@ class Employee extends CI_Controller
 
 	public function update_data()
 	{
-		$this->load->model('employeemodel');
+		
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		// $data =$this->input->post();
 		// $data['id'] = $this->input->get('id');
@@ -57,7 +62,7 @@ class Employee extends CI_Controller
 
 	public function delete($id = NULL)
 	{
-		$this->load->model('employeemodel');
+		
 		$id = $this->input->get('id');
 		$result = $this->employeemodel->delete($id);
 		if ($result) {

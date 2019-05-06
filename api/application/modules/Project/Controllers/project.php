@@ -7,10 +7,15 @@ header('Content-Type: application/json');
 
 class Project extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('projectmodel');
+	}
 
 	public function list()
 	{
-		$this->load->model('projectmodel');
+		
 		$data = $this->projectmodel->fetch();
 		$res = $data->result();
 		echo json_encode($res);
@@ -18,7 +23,7 @@ class Project extends CI_Controller
 
 	public function insert_data()
 	{
-		$this->load->model('projectmodel');
+		
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		if (!empty($data['ProjectId'])) {
 			$result = $this->projectmodel->update($data);
@@ -33,14 +38,14 @@ class Project extends CI_Controller
 	public function update()
 	{
 		$ProjectId = $this->input->get('id');
-		$this->load->model("projectmodel");
+		
 		$data = $this->projectmodel->fetch_data($ProjectId);
 		echo json_encode($data);
 	}
 
 	public function update_data()
 	{
-		$this->load->model('projectmodel');
+	
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		// $data =$this->input->post();
 		// $data['id'] = $this->input->get('id');
@@ -52,7 +57,7 @@ class Project extends CI_Controller
 
 	public function delete($id = NULL)
 	{
-		$this->load->model('projectmodel');
+	
 		$id = $this->input->get('id');
 		$result = $this->projectmodel->delete($id);
 		if ($result) {

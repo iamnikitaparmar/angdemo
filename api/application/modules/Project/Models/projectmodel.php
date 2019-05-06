@@ -26,7 +26,7 @@ class Projectmodel extends CI_Model
 
 	public function fetch()
 	{
-		$this->db->select('*');
+		$this->db->select('ProjectId,ProjectName,Description,IsActive');
 		$query = $this->db->get('tblprojects');
 		if ($query) {
 			return $query;
@@ -38,7 +38,7 @@ class Projectmodel extends CI_Model
 	{
 
 		if ($id) {
-			$this->db->select('*');
+			$this->db->select('ProjectId,ProjectName,Description,IsActive');
 			$this->db->where('ProjectId', $id);
 
 			$result = $this->db->get('tblprojects');
