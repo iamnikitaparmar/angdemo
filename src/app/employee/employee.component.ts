@@ -23,6 +23,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     debugger
     this.employeeEntity = {};
+    this.employeeEntity.IsActive = "1";
     this.header = 'Add';
     this.button = 'Add';
 
