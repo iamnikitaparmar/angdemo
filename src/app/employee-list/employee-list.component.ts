@@ -1,72 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { EmployeeService } from '../services/employee.service';
 import { Globals } from '../globals';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
-
 })
 export class EmployeeListComponent implements OnInit {
-  public employees = [];
-  employeeData;
-  employeeEntity;
-  submitted;
-  header;
-  button;
+  employeeList;
 
+  constructor(public http: HttpClient, private EmployeeService: EmployeeService, public globals: Globals, private router: Router, private route: ActivatedRoute) { }
 
-  constructor(private router: Router, private EmployeeService: EmployeeService, public globals: Globals, private route: ActivatedRoute) { }
   ngOnInit() {
     debugger
-    this.employeeEntity = {};
-    this.header = 'Add';
-    this.button = 'Add';
 
-
-    let id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.header = 'Edit';
-      this.button = 'Edit';
-      this.EmployeeService.fetchEmpolyee(id)
-        .then((data) => {
-          this.employeeEntity = data;
-          console.log(this.employeeEntity);
-        },
-          (error) => {
-            //alert('error');
-           
-
-          });
-    }
-  }
-
-
-  InsertEmployee(employeeForm) {
-    debugger
-
-    if (employeeForm.valid) {
-      this.EmployeeService.InsertEmployee(this.employeeEntity)
+    this.EmployeeService.getemployee()
       .then((data) => {
-        this.employeeData = data;
-        console.log(this.employeeData);
-        this.router.navigate(['/employee/list']);
+        this.employeeList = data;
+        console.log(this.employeeList);
       },
         (error) => {
           //alert('error');
-        });
-    } else {
-    }
+        }
+      );
   }
-
-
-
-
-
 }
-
-

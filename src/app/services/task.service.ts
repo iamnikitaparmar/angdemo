@@ -51,7 +51,7 @@ export class TaskService {
   getTask() {
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'task/list')
+      this.http.get(this.globals.baseAPIUrl + 'task/list_task')
         .toPromise()
         .then(
           res => { // Success 

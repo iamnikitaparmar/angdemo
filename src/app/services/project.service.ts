@@ -52,7 +52,7 @@ export class ProjectService {
   getproject() {
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'project/list')
+      this.http.get(this.globals.baseAPIUrl + 'project/list_project')
         .toPromise()
         .then(
           res => { // Success 

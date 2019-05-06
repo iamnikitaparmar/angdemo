@@ -14,7 +14,7 @@ class Employee extends CI_Controller
 		$this->load->model('employeemodel');
 	}
 
-	public function list()
+	public function list_employee()
 	{
 		
 		$data = $this->employeemodel->fetch();

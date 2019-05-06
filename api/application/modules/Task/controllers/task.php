@@ -14,7 +14,7 @@ class Task extends CI_Controller
 	}
 
 
-	public function list()
+	public function list_task()
 	{
 		
 		$data = $this->taskmodel->fetch();
@@ -22,7 +22,7 @@ class Task extends CI_Controller
 		echo json_encode($res);
 	}
 
-	public function selectlist()
+	public function select_list()
 	{
 		
 		$data['employee'] = $this->taskmodel->getallemplinselect();
@@ -70,7 +70,11 @@ class Task extends CI_Controller
 		$id = $this->input->get('id');
 		$result = $this->taskmodel->delete($id);
 		if ($result) {
-				redirect("http://localhost:4200/task/list");
+				$result = ["success" => true];
+				echo json_encode($result);
+		}else{
+			$result = ["success" => false];
+			echo json_encode($result);
 		}
 	}
 }

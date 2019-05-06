@@ -29,9 +29,9 @@ const routes: Routes = [
     component: AppComponent,
     children: [
 
-      { path: 'employee/add', component: EmployeeListComponent },
-      { path: 'employee/edit/:id', component: EmployeeListComponent },
-      { path: 'employee/list', component: EmployeeComponent },
+      { path: 'employee/add', component: EmployeeComponent },
+      { path: 'employee/edit/:id', component: EmployeeComponent },
+      { path: 'employee/list', component: EmployeeListComponent },
 
       { path: 'project/add', component: ProjectComponent },
       { path: 'project/edit/:id', component: ProjectComponent },

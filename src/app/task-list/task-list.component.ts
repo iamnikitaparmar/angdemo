@@ -33,12 +33,16 @@ export class TaskListComponent implements OnInit {
 
   deleteTask(task) {
     debugger
-          this.TaskService.deleteTask(task)
+          this.TaskService.deleteTask(task.DailyTaskId)
             .then((data) => {
-              let index = this.taskList.indexOf(task);
-              if (index != -1) {
-                this.taskList.splice(index, 1);
-              }
+              if(data.success){
+                  let index = this.taskList.indexOf(task);
+                  if (index != -1) {
+                    this.taskList.splice(index, 1);
+                  }
+                } else {
+                  //error
+                }
             },
               (error) => {
                 if (error.text) {

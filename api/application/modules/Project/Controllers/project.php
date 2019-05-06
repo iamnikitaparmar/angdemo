@@ -13,7 +13,7 @@ class Project extends CI_Controller
 		$this->load->model('projectmodel');
 	}
 
-	public function list()
+	public function list_project()
 	{
 		
 		$data = $this->projectmodel->fetch();
