@@ -3,14 +3,14 @@
 
     <label>Project Name</label>
     <input type="text" #ProjectName="ngModel" [(ngModel)]="projectEntity.ProjectName" name="ProjectName"
-        pattern="[a-zA-Z',&.$\ ]{2,}" maxlength="30" required><br>
+         maxlength="30" required><br>
 
     <span *ngIf="projectForm.submitted && ProjectName.invalid">
         <span *ngIf="ProjectName.errors.required ">
           Project name is required
         </span>
-        <span *ngIf=" ProjectName.errors.pattern || ProjectName.errors.maxlength  ">
-          Project name is not valid
+        <span *ngIf=" ProjectName.errors.maxlength  ">
+          Project name is not too long 
         </span>
     </span>
     <br>

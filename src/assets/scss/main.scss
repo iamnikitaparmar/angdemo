@@ -1,0 +1,569 @@
+/*--- Variables --- */
+/*--- End Variables --- */
+
+/*--- Links --- */
+@import "fonts";
+@import "colors";
+@import "numbers";
+/*--- End Links --- */
+
+/*--- Common Css --- */
+html{height:100%; min-height:100%;}
+body{margin:$number0; padding: $number0; background:$white; overflow-x: hidden; height:auto; min-height:100%; font-family: $fontfamilyregular; font-size:$fontsize; }
+body.overflow_body{overflow:hidden;}
+app-root, admin-root,.height_100_box { display: block; height: 100%; min-height: 100%;}
+p{margin:0px; padding:0px; line-height:22px; color:$black; font-size: $fontsize;}
+p.padding_15{padding-bottom:$number15;}
+p.padding_30{padding-bottom:$number30;}
+.no_padding{padding:$number0!important;}
+.clear,.clearfix {clear:both;}
+a {
+    text-decoration:none; color:$thememaincolor; cursor: pointer;
+    &:hover, &:focus 
+    {
+        text-decoration:none; color:$black;
+    }
+}
+ul {list-style:none; padding: $number0; margin: $number0;}
+li {list-style:none;}
+b,strong { font-family: $fontfamilyregular; margin-right: $number5;}
+h1{ font: normal $number25/$number25 $fontfamilyregular; margin:0 0 $number15 0; color:$thememaincolor; text-transform:uppercase;}
+h2{ font: normal $number20/$number20 $fontfamilyregular; margin:0 0 $number15 0; color:$themeoptioncolor; text-transform:capitalize;}
+h3{ font: normal $number15/$number15 $fontfamilyregular; margin:0 0 $number10 0; color:$themeoptioncolor; text-transform:capitalize;}
+h4{ font: normal $number10/$number10 $fontfamilyregular; margin:0 0 $number10 0; color:$themeoptioncolor; text-transform:capitalize;}
+.container-fluid{ width:100%; max-width:100%; padding:0 $number30;}
+.content_block{padding: 110px 0 60px 0; background:$lightgrey; display: block; position: relative; width: 100%;  min-height: 100%;}
+/*--- End Common Css --- */
+
+/*--- Header --- */
+header{ 
+    position: fixed; z-index: 999; width: 100%; padding:0 0 $number10 0; top: 0; height: 100px; background: $white; border-bottom:1px solid $grey; 
+    .header_logo 
+    {
+        height: 100px; width: auto; display: inline-block; margin-right: $number30;
+        a
+        {
+            display:block; padding: 5px 0;
+            img { width: auto; height: 90px;}
+        }
+    }
+    .sidebar_toggle
+    {
+        display: inline-block; vertical-align: middle;
+        button
+        { 
+            height:30px; width: 30px; display: inline-block; background: $grey; color: $black; border: $number0; cursor: pointer;
+            &::after
+            {
+                font-family: $fontawesome; content:"\f03b"; font-size: 16px; font-weight: 600;
+            }
+        }
+    }
+    .sidebar_toggle.active button
+    { 
+        &::after
+        {
+            content:"\f03c";
+        }
+    }
+    .user_dropdown {
+        float: right; position: relative; margin: $number20 0 0 0; 
+        .dropdown-toggle{
+            background: none; border: 0; cursor: pointer; padding: 0;
+            &::after{
+                display: none;
+            }
+        }
+        .letters
+        {
+            width:60px; height: 60px; border-radius: 100%; background:$white; border: 1px solid $grey;text-align: center;font-size: $number20; display: inline-block; padding: $number15 $number0; font-weight: bold;
+        }   
+        ul.dropdown-menu 
+        {
+            background: $white;padding: 0;border-radius: 5px;position: absolute;left: auto!important;right: 0!important;width: 300px; top: 60px !important;z-index: 999 !important;margin: 0;border: 0px;text-align: left;height: auto;box-shadow: 0 0 15px 1px rgba(69,65,78,.2);transition: all .5s ease-in-out; transform:none!important;
+            li.img_name 
+            {
+                position: relative;left: 0;top: 0;width: 100%;	height: 100%;background: $grey;
+                z-index: 9;	margin:$number0; padding: $number15; display:block;
+                .name_email {
+                   color: $black; font-size:$fontsize; padding: 0; width: 100%; font-weight: bold;
+                    span {
+                        color: $black;	font-size: 12px;border-bottom: 1px solid transparent;padding: 0;font-weight: normal;margin: $number5 0 0 0; display: block;
+                    }
+                }
+            }
+            li {
+                float: none;display: block;border-bottom: 0px;position: relative;margin: $number0;width: 100%;
+                a {
+                    padding: $number10 $number15;line-height: 13px;text-transform: capitalize;background: none;text-align: left;white-space: normal;color: $black;font-size: 13px;font-weight: normal;height: auto;display: block;clear: both;
+                    i {
+                        font-size: 13px;margin-right: 7px;
+                    }
+                }
+                &:hover {
+                    a {
+                        color: $thememaincolor;
+                    }
+                }
+            }
+            li.sign_btn {
+                padding: 15px;border-top: 1px solid $grey;
+                a{ background: $thememaincolor; color: $white; display:inline-block;
+                    &:hover{background: $themeoptioncolor;}
+                }
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        ul.dropdown-menu {display:block; opacity:0; top:100px!important; visibility:hidden; -moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
+        .user_dropdown {
+            &:hover {
+             ul.dropdown-menu {opacity:1; visibility:visible; top:60px!important; -moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
+            }
+        }
+     }
+}
+/*--- End Header --- */
+
+/*--- Footer --- */
+footer{
+    background: $grey; padding: $number10 $number0; display: block; position: fixed; bottom: 0; left:0; width: 100%; font-size: 12px; color: $black;
+    a{
+        color: $black;
+        &:hover,&:focus{
+            color: $thememaincolor;
+        }
+    }
+}
+/*--- End Footer --- */
+
+/*--- Sidebar --- */
+.sidebar_wrap{
+    background: $darkgrey; transition: all 0.3s ease-out; display: block; width: 16%; position: fixed; left: 0; top: 0; height: 100%; padding:100px 0 35px 0;
+    .sidebar_box{ 
+        display: block; position: relative; width: 100%; height: 100%; overflow-y: auto;  font-family: $fontfamilyregular; font-size: $fontsize; line-height: $fontsize; color: $black;
+        .sidebar_box_label{
+            color: $thememaincolor; font-size: 16px; font-weight: normal; display: block; font-family: $fontfamilybold; padding:$number20 $number20 $number10 $number30;
+        }
+        .collapse,.collapsing{width: 100%;}
+        li{
+            width: 100%;
+            a{
+                padding:$number10 $number20 $number10 $number30; display: block; color: $black; border-bottom: 1px solid $grey;
+                i{margin-right:$number5; }
+                .minus_plus{
+                    float: right; width: 10px; height: 10px;display: block; text-align: right;
+                    &::before{
+                        content:'\f106'; font-family: $fontawesome; font-size: 15px; font-weight: 600;
+                    }
+                }
+            }
+            .collapsed{
+                .minus_plus{
+                    &::before{
+                        content:'\f107';
+                    }
+                }
+            }
+            ul{ 
+                li{
+                    font-size: 92%;
+                    a{
+                        padding-left: $number40;
+                    }
+              
+                    ul{
+                        a{padding-left: $number60;}
+                    }
+                }
+            }
+        }
+    }
+}
+.small_menu.sidebar_wrap{
+    width: 5%; transition: all 0.3s ease-out;
+    .sidebar_box{ 
+        .sidebar_box_label,.text
+        {
+            display: none!important;
+        }
+        li{
+            a{padding:$number10 $number15;}
+        }
+        ul{ 
+            li{
+                a{
+                    padding-left: $number20;
+                }
+          
+                ul{
+                    a{padding-left: $number30;}
+                }
+            }
+        }
+    }
+}
+.main_block{transition: all 0.3s ease-out;}
+.main_block.large_content{
+    margin-left: 5%; max-width: 95%; flex: 0 0 95%; transition: all 0.3s ease-out;
+}
+/*--- End Sidebar --- */
+
+/*--- Form --- */
+.form-group
+{
+    position:relative;
+    label
+    {
+        line-height:$fontsize; color: $black; font-size: $fontsize; font-weight:normal;
+         span{color:$red;}
+    }
+    input, textarea
+    {
+        line-height:$fontsize; color: $black!important; font-size: $fontsize; font-weight:normal;
+    }
+    textarea{height:150px; resize:none;}
+}
+.rate_stars {
+	display: inline-block; border: 0;
+	input {
+		display: none;
+	}
+	label {
+		float: right; margin-bottom: $number0;
+		&:before {
+			display: inline-block;	font-size: 20px; padding: $number5; margin: $number0; cursor: pointer; font-family: $fontawesome; content: "\f005 ";
+		}
+	}
+	.half {
+		&:before {
+			content: "\f089 "; position: absolute; padding-right: $number0;
+		}
+	}
+	input {
+		&:checked {
+			&~label {
+				color: $darkgreen;
+				&:hover {
+					color: $lightgreen;
+					&~label {
+						color: $lightgreen;
+					}
+				}
+			}
+			&+label {
+				&:hover {
+					color: $lightgreen;
+				}
+			}
+		}
+	}
+	label {
+		&:hover {
+			color: $darkgreen;
+			&~label {
+				color: $darkgreen;
+			}
+			&~input {
+				&:checked {
+					&~label {
+						color: $lightgreen;
+					}
+				}
+			}
+		}
+	}
+}
+input[type="radio"] {
+	visibility: hidden; position: absolute;
+}
+.radio_box {
+	display: inline-block; margin: $number5 $number20 0 0;
+	label {
+		background: url(../images/radio.png) left center no-repeat; font-weight: normal; font-size: 15px; background-size: 15px; padding: $number5 $number5 $number5 $number20; text-align: center; display: inline-block; vertical-align: top; margin: 0; cursor: pointer; color: $black;
+	}
+	input[type="radio"] {
+		&:checked {
+			&+label {
+				background: url(../images/radio_checked.png) left center no-repeat; background-size: 15px;color: $thememaincolor;
+			}
+		}
+	}
+}
+input[type="checkbox"] {
+	visibility: hidden; position: absolute;
+}
+.check_box {
+	display: inline-block;	margin: $number5 $number20 0 0;
+	label {
+		background: url(../images/checkbox.png) left center no-repeat;	font-weight: normal; font-size: 15px; background-size: 15px; padding: $number5 $number5 $number5 $number20; text-align: center; display: inline-block; vertical-align: top; margin: 0; cursor: pointer; color: $black;
+	}
+	input[type="checkbox"] {
+		&:checked {
+			&+label {
+				background: url(../images/checkbox_checked.png) left center no-repeat; background-size: 15px; color: $thememaincolor;
+			}
+		}
+	}
+}
+select {
+    -moz-appearance: none!important;-webkit-appearance: none!important;background:$white url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid $grey!important; color: $black!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-size:$fontsize!important;
+    option{ background:$lightgrey!important; padding:7px!important; color:$black!important; font-size:$fontsize!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid $grey!important;}
+}
+.select2,.select2-results__options,.select2-search__field {color:#555!important; font-size: 14px; font-weight: normal; line-height: 22px;}
+
+.dropdown_checkbox {
+	display: block; width: 100%; margin: $number0;
+	label {
+		background: url(../images/checkbox.png) left center no-repeat;	font-weight: normal; font-size: $fontsize; background-size: 15px; padding: $number5 $number5 $number5 $number20;text-align: center;display: inline-block;vertical-align: top;margin: 0;cursor: pointer;color: $black;
+	}
+	input[type="checkbox"] {
+		&:checked {
+			&+label {
+				background: url(../images/checkbox_checked.png) left center no-repeat; background-size: 15px; color: $thememaincolor;
+			}
+		}
+	}
+	li.active {
+		label {
+			background: url(../images/checkbox_checked.png) left center no-repeat;	background-size: 15px; color: $thememaincolor;
+		}
+	}
+	.btn-default {
+        width: 100%; background: $white; border: 1px solid $grey!important; color: $black!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-size:$fontsize!important;
+	}
+	.btn-group {
+		width: 100%;
+    }
+    .input-group-text{border-radius: 4px 0 0 4px;}
+	.multiselect-container {
+		padding: 10px;
+		>li {
+			padding: 2px;
+		}
+		.input-group {
+			margin: 0;
+		}
+	}
+}
+.twitter-typeahead{display:block!important;}
+.tt-menu { width: 100%; margin: $number0; padding: $number0; background-color: $white; border: 1px solid $grey; border: 1px solid rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2); -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2); box-shadow: 0 5px 10px rgba(0,0,0,.2);}
+.tt-suggestion{
+    padding: $number5 $number10; color: $black; font-size: $fontsize;
+    &:hover { cursor: pointer; color: $white; background-color:$thememaincolor;}
+}
+.tt-suggestion.tt-cursor { color: $white; background-color: $thememaincolor;}
+.tt-suggestion p { margin: 0;}
+
+.file_upload{
+    input[type="text"]{background:url(../images/upload.png) 98% center no-repeat $white; background-size:20px;}
+    input[type="file"]{opacity: 0; position: absolute; left: 0; top: 22px; z-index: 99; width: 100%; cursor: pointer;}
+} 
+.imageuploadify 
+{
+    .imageuploadify-images-list {
+        .imageuploadify-container {
+            margin:$number10;
+            .imageuploadify-details{
+                background:rgba(0,0,0,.5); color: $white; padding: $number30 $number10 $number10 $number10; font-size: 13px;
+            }
+        }
+        i{ margin: 0;}
+        .imageuploadify-container{
+            i{ margin-top: 35%; font-size: 30px;}
+        } 
+    }
+}
+
+.activeyes_box 
+{
+    display:inline-block; margin:0;
+    label{ 
+        background:$grey; font-weight:normal; height: 30px; width: 60px; display:inline-block; vertical-align:top; margin:0; cursor:pointer; position: relative; top: 5px; border-radius: 20px;
+        &:after{ content: ''; width: 24px; height: 24px; border-radius: 100%; left: 3px; top: 3px; background: $darkgrey; position: absolute; transition:left 0.3s linear 0s; }
+    }
+    input[type="checkbox"]{
+        &:checked {
+            &+label{
+                &::after{left :52%; background: $thememaincolor; transition:left 0.3s linear 0s; }
+            }
+        }
+    }
+}
+
+.theme_btn
+{ 
+    cursor:pointer; font-size:$fontsize; line-height: $fontsize; padding: $number10 $number15; text-align: center; background:$thememaincolor; color: $white; box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border: 0;
+    &:hover, &:focus{
+        background:$themeoptioncolor; color: $white; 
+    }
+}
+.themeoption_btn{
+    cursor:pointer; font-size:$fontsize; line-height: $fontsize; padding: $number10 $number15; text-align: center; background:$themeoptioncolor; color: $white; box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border: 0;
+    &:hover, &:focus{
+        background:$thememaincolor; color: $white; 
+    }
+}
+.icon_btn{
+    cursor:pointer; font-size:$fontsize; line-height: $fontsize; padding: $number10 $number15; text-align: center; background:$grey; color: $black; box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border: 0;
+    &:hover, &:focus{
+        background:$thememaincolor; color: $white; 
+    }
+}
+/*--- End Form --- */
+
+/*--- Datatable --- */
+.dataTables_wrapper {
+    label {
+		line-height: 13px; color: $black; font-size: 13px; font-weight: normal;
+	}
+	.dt-buttons {
+		float: right !important;margin-left: $number15;
+	}
+	.dataTables_info {
+		font-size: 13px; color: $black;
+	}
+}
+.dataTables_filter {
+	input {
+    	line-height: 20px; color: $black !important; font-size: 13px; font-weight: normal; box-shadow: none; border: 1px solid $grey; padding: 5px 12px;
+	}
+}
+.dataTables_length {
+	select {
+		width: auto !important;	border: 1px solid $grey !important; padding-left: 7px !important;
+	}
+}
+table.dataTable,table.dataTable.no-footer {
+	border: 1px solid #ddd !important;
+}
+.dt-buttons{
+    button.dt-button,div.dt-button,a.dt-button{
+         background: none!important; padding: $number0!important; margin: 0 0 0 $number10!important; font-size: 20px!important; color:$black!important; width: 30px; border: 0!important; 
+         span{display: none!important;}
+    }
+    .buttons-print
+    {
+        &::before{color:$black!important; }
+    } 
+    .buttons-excel
+    {
+        &::before{color:$black!important; }
+    }
+} 
+.dataTables_wrapper {
+	.dataTables_paginate {
+		.paginate_button.current {
+			background-color: $lightgrey;
+			border: 1px solid $grey;
+			background: $thememaincolor;
+			&:hover {
+				background: $thememaincolor;
+			}
+		}
+	}
+}
+table {
+	tr {
+		th {
+			line-height: 20px; color: $black; font-size: $fontsize; font-family: $fontfamilyregular; text-transform: none; background: $lightgrey;
+		}
+		td {
+			line-height: 20px; color: $black; font-size: $fontsize; font-family: $fontfamilyregular;
+		}
+	}
+    .activeyes_box {
+        label{
+            height: 20px; width: 45px; top: 0;
+            &::after{width: 15px; height: 15px; top: 2px; }
+        }
+        input[type="checkbox"]{
+            &::checked {
+                &+label{
+                    :after{left :62%;}
+                }
+            }
+        }
+    }
+
+	.edit,.delete {
+		font-size: 12px; cursor: pointer; min-width: 25px; line-height: 12px; box-shadow: none; opacity: 1; background: none; padding: 0; border: 0;
+		i {
+			font-size: 17px; line-height: 17px; color: $black;
+		}
+	}
+	.delete {
+		i {font-size: 17px;line-height: 17px;color: $red;}
+	}
+	.sr_no_width {
+		width: 60px;
+	}
+	.active_width {
+		width: 80px;
+	}
+	.action_width {
+		width: 80px;
+    }
+}
+/*--- End Datatable --- */
+
+/*--- Content --- */
+.breadcrumb_block{
+    .breadcrumb
+    {
+        background: none; padding: $number0; margin:$number15 $number0 $number0;
+    }
+}
+.list_li {
+	li {
+		display: block;	line-height: 24px; color: $black; font-weight: normal; font-size: $fontsize; font-family: $fontfamilyregular; background: url(../images/circle.png) left 7px no-repeat; background-size: 10px; padding: 0 0 5px 17px;
+	}
+}
+.margin_li {
+	margin-bottom: $number30;
+}
+.ollist_li {
+    padding-left:$number15;
+	li {
+        list-style-type: upper;	line-height: 24px; color: $black; font-weight: normal; font-size: $fontsize; font-family: $fontfamilyregular; padding: 0 0 5px 0;
+	}
+}
+.accodion_block{
+    .card{margin-bottom: $number5;}
+    button{
+        width: 100%; padding: 10px; font-size: 18px; display: block; text-align: left; font-family: $fontfamilyregular; color:$thememaincolor; background: $lightgrey;
+        &:hover,&:focus{
+            text-decoration: none; color:$thememaincolor;
+        }
+        .minus_plus{
+            float: right; width: 30px; height: 30px;display: block; text-align: center;
+            &::before{
+                content:'\f106'; font-family: $fontawesome; font-size: 20px; font-weight: 600;
+            }
+        }
+    }
+    .collapsed{
+        background: $white;
+        .minus_plus{
+            &::before{
+                content:'\f107';
+            }
+        }
+    }
+    .card-header{padding: 0; display: block;}
+}
+.tab_block{
+    .nav-pills {
+        .nav-link{
+            color: $white; margin: 0 $number5 -1px 0; border:1px solid $grey; background: $thememaincolor; border-bottom: 0; border-radius: 4px 4px 0 0; 
+        }
+        .nav-link.active,.show > .nav-link{background-color: $white; color: $black;}
+    }
+    .tab-content{padding: $number20; background: $white; font-size: $fontsize; font-family: $fontfamilyregular; line-height: 28px;
+    border: 1px solid $grey;}
+}
+.modal-dialog{margin: 15% auto;}
+/*--- End Content --- */
+
+/*--- Amcharts --- */
+/*--- End Amcharts --- */

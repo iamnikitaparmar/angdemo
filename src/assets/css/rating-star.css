@@ -1,0 +1,9 @@
+/*Rating Stars*/
+.rate_stars { display: inline-block; border: 0;}
+.rate_stars > input {display: none;}
+.rate_stars > label {float: right; margin-bottom:0;}
+.rate_stars > label:before { display: inline-block;  font-size:20px; padding:5px; margin: 0; cursor: pointer; font-family: "Font Awesome 5 Free"; content: "\f005 "; font-weight: 600;}
+.rate_stars .half:before { content: "\f089 "; position: absolute; padding-right: 0;}
+.rate_stars input:checked ~ label,.rate_stars label:hover, .rate_stars label:hover ~ label { color: #73B100;}
+.rate_stars input:checked + label:hover, .rate_stars input:checked ~ label:hover,.rate_stars input:checked ~ label:hover ~ label,.rate_stars label:hover ~ input:checked ~ label { color: #A6E72D;} 
+/*Rating Stars*/

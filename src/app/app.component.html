@@ -1,2 +1,22 @@
+<div class="loader_new" *ngIf="globals.isLoading">
+    <div style="position: fixed; z-index: 9999; top: 38%; left: 45%;">
+        <div class="loader"></div>
+        <div style="color: #888; margin-top: 10px; text-align: center;"><strong>Processing...</strong></div>
+    </div>
+</div>
 
-<router-outlet></router-outlet>
+
+<div *ngIf="globals.authData!=undefined">
+    <app-header></app-header>
+    <div class="right_content_block">
+        <div class="col-md-12 col-sm-12 col-xs-12 height_100">
+            <div class="bg_white_block">
+                <router-outlet></router-outlet>
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="globals.authData==undefined">
+    <router-outlet></router-outlet>
+</div>
