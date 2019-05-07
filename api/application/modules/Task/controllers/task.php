@@ -70,10 +70,10 @@ class Task extends CI_Controller
 		$id = $this->input->get('id');
 		$result = $this->taskmodel->delete($id);
 		if ($result) {
-				$result = ["success" => true];
+				$result = ["del_success" => true];
 				echo json_encode($result);
 		}else{
-			$result = ["success" => false];
+			$result = ["del_success" => false];
 			echo json_encode($result);
 		}
 	}

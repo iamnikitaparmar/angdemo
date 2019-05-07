@@ -24,6 +24,7 @@ export class TaskComponent implements OnInit {
 
     debugger
     this.taskEntity = {};
+    this.taskEntity.IsActive = "1";
     this.header = 'Add';
     this.button = 'Add';
 

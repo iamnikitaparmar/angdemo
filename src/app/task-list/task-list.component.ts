@@ -35,14 +35,11 @@ export class TaskListComponent implements OnInit {
     debugger
           this.TaskService.deleteTask(task.DailyTaskId)
             .then((data) => {
-              if(data.success){
                   let index = this.taskList.indexOf(task);
                   if (index != -1) {
                     this.taskList.splice(index, 1);
                   }
-                } else {
-                  //error
-                }
+
             },
               (error) => {
                 if (error.text) {

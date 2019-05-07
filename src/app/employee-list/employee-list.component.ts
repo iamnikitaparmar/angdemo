@@ -28,4 +28,22 @@ export class EmployeeListComponent implements OnInit {
         }
       );
   }
+
+  deleteEmployee(employee) {
+    debugger
+          this.EmployeeService.deleteEmployee(employee.EmployeeId)
+            .then((data) => {
+                  let index = this.employeeList.indexOf(employee);
+                  if (index != -1) {
+                    this.employeeList.splice(index, 1);
+                  }
+
+            },
+              (error) => {
+                if (error.text) {
+                 //error
+                }
+              });
+     
+  }
 }

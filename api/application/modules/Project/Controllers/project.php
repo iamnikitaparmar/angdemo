@@ -61,7 +61,11 @@ class Project extends CI_Controller
 		$id = $this->input->get('id');
 		$result = $this->projectmodel->delete($id);
 		if ($result) {
-				redirect("http://localhost:4200/project/list");
-		}
+			$result = ["del_success" => true];
+			echo json_encode($result);
+	}else{
+		$result = ["del_success" => false];
+		echo json_encode($result);
+	}
 	}
 }

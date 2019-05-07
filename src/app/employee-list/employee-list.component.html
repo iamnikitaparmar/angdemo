@@ -1,5 +1,5 @@
 <h1>Employee</h1>
-<a href="/employee/add">Add Employee</a>
+<button routerLink="/employee/add">Add Employee</button>
 <br><br>
 <table border="1">
     <tr>
@@ -25,8 +25,8 @@
         <td>{{employee.EmailId}} </td>
         <td>{{employee.IsActive}} </td>
         <td>
-            <a href="/employee/edit/{{employee.EmployeeId}}">Update</a>
-            <a href="http://localhost/angdemo/api/employee/delete?id={{employee.EmployeeId}}">Delete</a>
+            <button routerLink="/employee/edit/{{employee.EmployeeId}}">Update</button>
+            <button (click)="deleteEmployee(employee)">Delete</button>
         </td>
     </tr>
 </table>

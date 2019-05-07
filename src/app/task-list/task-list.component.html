@@ -1,6 +1,5 @@
- 
 <h1>Task</h1>
-<button routerLink="/task/add">Add Task</button>  
+<button routerLink="/task/add">Add Task</button>
 <br><br>
 
 <table border="1">
@@ -12,7 +11,7 @@
         <th>TaskDescription</th>
         <th>IsActive</th>
         <th>Change</th>
-       
+
     </tr>
     <tr *ngFor="let task of taskList">
         <td>{{task.DailyTaskId}} </td>
@@ -22,12 +21,8 @@
         <td>{{task.TaskDescription}} </td>
         <td>{{task.IsActive}} </td>
         <td>
-            <!-- <a href="http://localhost:4200/task/edit/{{task.DailyTaskId}}">Update</a>
-            <a href="http://localhost/angdemo/api/task/delete?id={{task.DailyTaskId}}">Delete</a> -->
-            <button  routerLink="/task/edit/{{task.DailyTaskId}}">Update</button>   
-            <button (click)="deleteTask(task)">Delete</button>          
-          
-             
+            <button routerLink="/task/edit/{{task.DailyTaskId}}">Update</button>
+            <button (click)="deleteTask(task)">Delete</button>
         </td>
     </tr>
 </table>

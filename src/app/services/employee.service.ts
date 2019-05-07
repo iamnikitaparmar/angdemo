@@ -85,6 +85,25 @@ export class EmployeeService {
     });
     return promise;
 }
-  }
+
+deleteEmployee(del) {
+  debugger
+  let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'employee/delete?id=' + del)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res);
+        },
+        msg => { // Error
+          reject(msg);
+          //  this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
+        }
+      );
+  });
+  return promise;
+}
+}
 
 

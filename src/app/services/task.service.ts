@@ -70,7 +70,7 @@ export class TaskService {
   getselectedTask() {
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'task/selectlist')
+      this.http.get(this.globals.baseAPIUrl + 'task/select_list')
         .toPromise()
         .then(
           res => { // Success 

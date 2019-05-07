@@ -29,4 +29,23 @@ export class ProjectListComponent implements OnInit {
         });
   }
 
+  deleteProject(project) {
+    debugger
+          this.ProjectService.deleteProject(project.ProjectId)
+            .then((data) => {
+                  let index = this.projectList.indexOf(project);
+                  if (index != -1) {
+                    this.projectList.splice(index, 1);
+                  }
+
+            },
+              (error) => {
+                if (error.text) {
+                 //error
+                }
+              });
+     
+  }
+ 
+
 }

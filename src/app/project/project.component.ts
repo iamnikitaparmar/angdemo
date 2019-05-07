@@ -22,6 +22,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     debugger
     this.projectEntity = {};
+    this.projectEntity.IsActive = "1";
     this.header = 'Add';
     this.button = 'Add';
 

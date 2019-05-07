@@ -1,6 +1,6 @@
  
 <h1>Project</h1>
-<a href="http://localhost:4200/project/add">Add Project</a>
+<button routerLink="/project/add">Add Project</button>
 <br><br>
 
 <table border="1">
@@ -17,6 +17,11 @@
         <td>{{project.ProjectName}} </td>
         <td>{{project.Description}} </td>
         <td>{{project.IsActive}} </td>
-        <td><a href="http://localhost:4200/project/edit/{{project.ProjectId}}">Update</a><a href="http://localhost/angdemo/api/project/delete?id={{project.ProjectId}}">Delete</a></td>
+        <td>
+           
+
+            <button routerLink="/project/edit/{{project.ProjectId}}">Update</button>
+            <button (click)="deleteProject(project)">Delete</button>
+        </td>
     </tr>
 </table>

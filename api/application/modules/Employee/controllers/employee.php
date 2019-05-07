@@ -66,7 +66,11 @@ class Employee extends CI_Controller
 		$id = $this->input->get('id');
 		$result = $this->employeemodel->delete($id);
 		if ($result) {
-			redirect("http://localhost:4200/employee/list");
-		}
+			$result = ["del_success" => true];
+			echo json_encode($result);
+	}else{
+		$result = ["del_success" => false];
+		echo json_encode($result);
+	}
 	}
 }
