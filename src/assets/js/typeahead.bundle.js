@@ -255,7 +255,7 @@
         "use strict";
         var LOCAL_STORAGE;
         try {
-            LOCAL_STORAGE = window.localStorage;
+            LOCAL_STORAGE = window.sessionStorage;
             LOCAL_STORAGE.setItem("~~~", "!");
             LOCAL_STORAGE.removeItem("~~~");
         } catch (err) {

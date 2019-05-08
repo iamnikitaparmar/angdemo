@@ -25,7 +25,28 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/jquery-1.11.3.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/jquery.repeater.js",
+              "src/assets/js/perfect-scrollbar.js",
+              "src/assets/js/bootstrap-datetimepicker.js",
+              "src/assets/js/jquery.dataTables.min.js",
+              "src/assets/js/sweetalert2.min.js",
+              "src/assets/js/custom.js",
+              "src/assets/js/angular.js",
+              "src/assets/js/dataTables.buttons.min.js",
+              "src/assets/js/dataTables.responsive.min.js",
+              "src/assets/js/buttons.print.min.js",
+              "src/assets/js/jszip.min.js",
+              "src/assets/js/buttons.html5.min.js",
+              "src/assets/js/jspdf.min.js",
+              "src/assets/js/html2canvas.min.js",
+              "src/assets/js/select2.min.js",
+              "src/assets/js/typeahead.bundle.js",
+              "src/assets/js/jquery.bxslider.js",
+              "src/assets/js/jquery.flexslider.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -86,7 +107,6 @@
             "local": {
               "browserTarget": "angdemo:build:local"
             }
-            
           }
         },
         "extract-i18n": {
@@ -103,6 +123,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              
               "src/styles.css"
             ],
             "scripts": [],

@@ -16,6 +16,8 @@ import { TaskComponent } from './task/task.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { TaskService } from './services/task.service';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     TaskComponent,
     TaskListComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     RouterModule
   ],
-  providers: [Globals,EmployeeService,ProjectService,],
+  providers: [Globals,EmployeeService,ProjectService,TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
