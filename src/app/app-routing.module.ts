@@ -28,12 +28,8 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AppComponent,
-    children: [
-
-      { path: 'employee/add', component: EmployeeComponent },
+  
+    { path: 'employee/add', component: EmployeeComponent },
       { path: 'employee/edit/:id', component: EmployeeComponent },
       { path: 'employee/list', component: EmployeeListComponent },
 
@@ -43,10 +39,8 @@ const routes: Routes = [
 
       { path: 'task/add', component: TaskComponent },
       { path: 'task/edit/:id', component: TaskComponent },
-      { path: 'task/list', component: TaskListComponent },
-
-    ]
-  }
+      { path: 'task/list', component: TaskListComponent }
+ 
 ];
 
 @NgModule({

@@ -1,19 +1,10 @@
-<div>
-    <app-header></app-header>
-    <app-sidebar></app-sidebar>
-    <div>
-        <router-outlet></router-outlet>
-    </div>
-    <app-footer></app-footer>
-</div>
-
-<!-- <app-header></app-header>
-<app-sidebar></app-sidebar>
-<div class="right_content_block">
-    <div class="col-md-12 col-sm-12 col-xs-12 height_100">
-        <div class="bg_white_block">
+<app-header></app-header>
+<div class="content_block">
+    <div class="container-fluid">
+        <div class="row">
+            <app-sidebar></app-sidebar>
             <router-outlet></router-outlet>
-            <app-footer></app-footer>
         </div>
     </div>
-</div> -->
+</div>
+<app-footer></app-footer>

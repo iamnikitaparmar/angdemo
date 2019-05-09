@@ -17,7 +17,7 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit() {
 
-    debugger
+    
 
     this.ProjectService.getproject()
       .then((data) => {
@@ -30,7 +30,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   deleteProject(project) {
-    debugger
+    
           this.ProjectService.deleteProject(project.ProjectId)
             .then((data) => {
                   let index = this.projectList.indexOf(project);

@@ -11,7 +11,7 @@ export class EmployeeService {
   constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
   InsertEmployee(employeeEntity) {
-    debugger
+    
   
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Employee/insert_data', employeeEntity)
@@ -48,7 +48,7 @@ export class EmployeeService {
   }
   
   getemployee() {
-    debugger
+    
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'employee/list_employee')
         .toPromise()
@@ -68,7 +68,7 @@ export class EmployeeService {
 
   fetchEmpolyee(id){
 
-    debugger
+    
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'employee/update?id=' + id)
         .toPromise()
@@ -87,7 +87,7 @@ export class EmployeeService {
 }
 
 deleteEmployee(del) {
-  debugger
+  
   let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'employee/delete?id=' + del)
       .toPromise()

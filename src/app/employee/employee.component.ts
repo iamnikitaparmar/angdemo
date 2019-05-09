@@ -21,7 +21,7 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private router: Router, private EmployeeService: EmployeeService, public globals: Globals, private route: ActivatedRoute) { }
   ngOnInit() {
-    debugger
+    
     this.employeeEntity = {};
     this.employeeEntity.IsActive = "1";
     this.header = 'Add';
@@ -47,7 +47,7 @@ export class EmployeeComponent implements OnInit {
 
 
   InsertEmployee(employeeForm) {
-    debugger
+    
 
     if (employeeForm.valid) {
       this.EmployeeService.InsertEmployee(this.employeeEntity)

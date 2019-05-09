@@ -1,59 +1,79 @@
-<h1>{{ header }} Task</h1>
-
-<form role="form" #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && Inserttask(taskForm)">
-
-  <label>Employee Name</label>
-  <select #EmployeeId="ngModel" [(ngModel)]="taskEntity.EmployeeId" name="EmployeeId" required>
-     <ng-container *ngFor='let ts of employeeList'>
-      <option [value]="ts.EmployeeId"  ngSelected="taskEntity.EmployeeId==ts.EmployeeId" >{{ts.EmployeeName}}</option>
-    </ng-container>
-  </select>
-
-  <span *ngIf="taskForm.submitted && EmployeeId.invalid">
-    <span *ngIf="EmployeeId.errors.required ">
-      Employee name is required
-    </span>
-  </span>
-  <br>
-  <label>Project Name</label>
-  <select #ProjectId="ngModel" [(ngModel)]="taskEntity.ProjectId" name="ProjectId" required>
-    <ng-container *ngFor='let ts of projectList'>
-      <option [value]="ts.ProjectId">{{ts.ProjectName}}</option>
-    </ng-container>
-  </select>
-
-  <span *ngIf="taskForm.submitted && ProjectId.invalid">
-    <span *ngIf="ProjectId.errors.required ">
-      Employee name is required
-    </span>
-  </span>
-
-  <br>
-  <label>TaskDate</label>
-  <input type="date" #TaskDate="ngModel" [(ngModel)]="taskEntity.TaskDate" name="TaskDate" required><br>
-
-  <span *ngIf="taskForm.submitted && TaskDate.invalid">
-    <span *ngIf="TaskDate.errors.required">
-      TaskDate is required
-    </span>
-  </span>
-  <br>
-
-  <label>TaskDescription</label>
-  <textarea cols="25" rows="5" name="TaskDescription" #TaskDescription="ngModel"
-    [(ngModel)]="taskEntity.TaskDescription" required></textarea><br>
-  <span *ngIf="taskForm.submitted && TaskDescription.invalid">
-    <span *ngIf="TaskDescription.errors.required  ">
-      TaskDescription is required
-    </span>
-  </span>
-  <br>
-
-
-
-  <label>IsActive</label>
-  <input type="radio" #IsActive="ngModel" [(ngModel)]="taskEntity.IsActive" name="IsActive" value="1"> Yes
-  <input type="radio" #IsActive="ngModel" [(ngModel)]="taskEntity.IsActive" name="IsActive" value="0"> No<br>
-  <br>
-  <button type="submit"><span>{{button}}</span></button>
-</form>
+<div class="col-md-10 col-sm-10 offset-md-2 main_block">
+  <h1 class="float-left">{{ header }} Task</h1>
+  <div class="clearfix"></div>
+  <form role="form" #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && Inserttask(taskForm)">
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <div class="form-group">
+          <label><span>*</span>Employee Name</label>
+          <select #EmployeeId="ngModel" [(ngModel)]="taskEntity.EmployeeId" name="EmployeeId" class="form-control"
+            required>
+            <ng-container *ngFor='let ts of employeeList'>
+              <option [value]="ts.EmployeeId" ngSelected="taskEntity.EmployeeId==ts.EmployeeId">{{ts.EmployeeName}}
+              </option>
+            </ng-container>
+          </select>
+          <span *ngIf="taskForm.submitted && EmployeeId.invalid">
+            <span *ngIf="EmployeeId.errors.required ">
+              Employee name is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <div class="form-group">
+          <label><span>*</span>Project Name</label>
+          <select #ProjectId="ngModel" [(ngModel)]="taskEntity.ProjectId" name="ProjectId" class="form-control"
+            required>
+            <ng-container *ngFor='let ts of projectList'>
+              <option [value]="ts.ProjectId">{{ts.ProjectName}}</option>
+            </ng-container>
+          </select>
+          <span *ngIf="taskForm.submitted && ProjectId.invalid">
+            <span *ngIf="ProjectId.errors.required ">
+              Employee name is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <div class="form-group">
+          <label><span>*</span>TaskDate</label>
+          <input type="date" #TaskDate="ngModel" [(ngModel)]="taskEntity.TaskDate" name="TaskDate"
+            class="form-control form_date" required><br>
+          <span *ngIf="taskForm.submitted && TaskDate.invalid">
+            <span *ngIf="TaskDate.errors.required">
+              TaskDate is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <div class="form-group">
+          <label><span>*</span>TaskDescription</label>
+          <textarea cols="25" rows="5" name="TaskDescription" #TaskDescription="ngModel" class="form-control"
+            [(ngModel)]="taskEntity.TaskDescription" required></textarea><br>
+          <span *ngIf="taskForm.submitted && TaskDescription.invalid">
+            <span *ngIf="TaskDescription.errors.required  ">
+              TaskDescription is required
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-1 col-sm-12">
+        <div class="form-group">
+          <label><span>*</span>IsActive</label>
+          <br>
+          <div class="activeyes_box">
+            <input type="checkbox" #IsActive="ngModel" [(ngModel)]="taskEntity.IsActive" name="IsActive" checked
+              value="1">
+            <label for="IsActive"></label>
+          </div>
+        </div>
+      </div>
+      <div class="text-center col-md-12 col-sm-12">
+        <button type="submit" class="theme_btn"><span>{{button}}</span></button>
+      </div>
+    </div>
+  </form>
+</div>

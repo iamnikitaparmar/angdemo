@@ -16,7 +16,7 @@ export class EmployeeListComponent implements OnInit {
   constructor(public http: HttpClient, private EmployeeService: EmployeeService, public globals: Globals, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    debugger
+
 
     this.EmployeeService.getemployee()
       .then((data) => {
@@ -30,7 +30,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   deleteEmployee(employee) {
-    debugger
+
           this.EmployeeService.deleteEmployee(employee.EmployeeId)
             .then((data) => {
                   let index = this.employeeList.indexOf(employee);
