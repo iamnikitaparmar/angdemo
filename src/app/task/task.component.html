@@ -1,5 +1,10 @@
 <div class="col-md-10 col-sm-10 offset-md-2 main_block">
   <h1 class="float-left">{{ header }} Task</h1>
+  <div class="float-right breadcrumb_block">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/task/list">Task List</a></li>
+    </ol>
+  </div>
   <div class="clearfix"></div>
   <form role="form" #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && Inserttask(taskForm)">
     <div class="row">
@@ -60,13 +65,14 @@
           </span>
         </div>
       </div>
+
       <div class="col-md-1 col-sm-12">
         <div class="form-group">
           <label><span>*</span>IsActive</label>
           <br>
           <div class="activeyes_box">
-            <input type="checkbox" #IsActive="ngModel" [(ngModel)]="taskEntity.IsActive" name="IsActive" checked
-              value="1">
+            <input type="checkbox" id="IsActive" #IsActive="ngModel" [(ngModel)]="taskEntity.IsActive" name="IsActive"
+              checked value="1">
             <label for="IsActive"></label>
           </div>
         </div>

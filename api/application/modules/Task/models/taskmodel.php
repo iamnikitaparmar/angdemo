@@ -30,7 +30,7 @@ class Taskmodel extends CI_Model
 	{
 	$this->db->select('dt.DailyTaskId,dt.TaskDate,dt.TaskDescription,dt.IsActive,e.EmployeeId,e.EmployeeName,p.ProjectId,p.ProjectName', false);
 	$this->db->from('tbldailytask  as  dt');
-	$this->db->join('tblemployees  as e', 'dt.EmployeeId = e.EmployeeId','right outer');
+	$this->db->join('tblemployees  as e', 'dt.EmployeeId = e.EmployeeId');
 	$this->db->join('tblprojects as p', 'dt.ProjectId = p.ProjectId');
 
 	$query = $this->db->get();

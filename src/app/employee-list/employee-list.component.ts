@@ -4,6 +4,9 @@ import { EmployeeService } from '../services/employee.service';
 import { Globals } from '../globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+declare var $, swal: any;
+declare function myInput(): any;
+declare var $, Bloodhound: any;
 
 @Component({
   selector: 'app-employee-list',
@@ -12,6 +15,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmployeeListComponent implements OnInit {
   employeeList;
+
+
 
   constructor(public http: HttpClient, private EmployeeService: EmployeeService, public globals: Globals, private router: Router, private route: ActivatedRoute) { }
 
@@ -27,6 +32,32 @@ export class EmployeeListComponent implements OnInit {
           //alert('error');
         }
       );
+  }
+
+  isActiveChange(changeEntity, i) {
+    if (this.employeeList[i].IsActive == 1) {
+      this.employeeList[i].IsActive = 0;
+      changeEntity.IsActive = 0;
+    } else {
+      this.employeeList[i].IsActive = 1;
+      changeEntity.IsActive = 1;
+    }
+   
+    this.EmployeeService.isActiveChange(changeEntity)
+      .then((data) => {
+        
+        swal({
+          //position: 'top-end',
+          type: 'success',
+          title: 'Employee updated successfully',
+          showConfirmButton: false,
+          timer: 4000
+        })
+
+      },
+        (error) => {
+         //error
+        });
   }
 
   deleteEmployee(employee) {

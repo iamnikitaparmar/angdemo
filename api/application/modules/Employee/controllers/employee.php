@@ -60,6 +60,16 @@ class Employee extends CI_Controller
 		
 	}
 
+	public function isActiveChange() {
+		$post_data = json_decode(trim(file_get_contents('php://input')), true);	
+		if ($post_data) {
+			$result = $this->Employee_model->isActiveChange($post_data);
+			if($result) {
+				echo json_encode('success');	
+			}						
+		}		
+	}	
+
 	public function delete($id = NULL)
 	{
 		

@@ -34,6 +34,11 @@ export class ProjectComponent implements OnInit {
       this.ProjectService.fetchProject(id)
         .then((data) => {
           this.projectEntity = data;
+          if (data['IsActive'] == 0) {
+            this.projectEntity.IsActive = 0;
+          } else {
+            this.projectEntity.IsActive = '1';
+          }
           console.log(this.projectEntity);
         },
           (error) => {

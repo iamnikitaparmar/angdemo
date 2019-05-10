@@ -42,7 +42,6 @@ class Employeemodel extends CI_Model
 
 	public function fetch_data($id = NULL)
 	{
-
 		if ($id) {
 			$this->db->select('EmployeeId,EmployeeName,JoiningDate,	BirthDate,Address,PhoneNo,Designation,EmailId,IsActive');
 			$this->db->where('EmployeeId', $id);
@@ -89,7 +88,36 @@ class Employeemodel extends CI_Model
 			return false;
 		}
 	}
-
+	//IsActive
+	public function isActiveChange($post_data)
+	{
+		try {
+			if ($post_data) {
+				if (trim($post_data['IsActive']) == 1) {
+					$IsActive = true;
+				} else {
+					$IsActive = false;
+				}
+				$data = array(
+					'IsActive' => $IsActive,
+					'UpdatedBy' =>1,
+					'UpdatedOn' => date('y-m-d H:i:s'),
+				);
+				$this->db->where('EmployeeId', trim($post_data['EmployeeId']));
+				$res = $this->db->update('tblemployees', $data);
+				$db_error = $this->db->error();
+				if (!empty($db_error) && !empty($db_error['code'])) {
+					throw new Exception('Database error! Error Code [' . $db_error['code'] . '] Error: ' . $db_error['message']);
+					return false; // unreachable return statement !!!
+				}
+			} else {
+				return false;
+			}
+		} catch (Exception $e) {
+			trigger_error($e->getMessage(), E_EMPLOYEE_ERROR);
+			return false;
+		}
+	}
 	public function delete($id)
 	{
 

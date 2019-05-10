@@ -45,6 +45,12 @@ export class TaskComponent implements OnInit {
       this.TaskService.fetchTask(id)
         .then((data) => {
           this.taskEntity = data;
+          if (data['IsActive'] == 0) {
+            this.taskEntity.IsActive = 0;
+          } else {
+            this.taskEntity.IsActive = '1';
+          }
+
           console.log(this.taskEntity);
         },
           (error) => {

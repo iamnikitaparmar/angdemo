@@ -1,26 +1,58 @@
 <div class="sidebar_wrap">
 	<ul id="accordion" class="sidebar_box">
 		<li class="sidebar_box_label"><span>Links</span></li>
-		<li><a href="employee/list" title="Employee" data-toggle="tooltip" data-placement="right"><i
-					class="fa fa-user"></i><span class="text">Employee</span></a></li>
-		<li><a href="project/list" title="Project" data-toggle="tooltip" data-placement="right"><i
-					class="fa fa-user"></i><span class="text">Project</span></a></li>
-		<li><a href="task/list" title="Task" data-toggle="tooltip" data-placement="right"><i
-					class="fa fa-user"></i><span class="text">Task</span></a></li>
 		<li>
-			<div id="heading1">
-				<a data-toggle="collapse" class="collapsed" data-target="#collapse1" aria-expanded="true"
-					aria-controls="collapse1">
-					<i class="fa fa-user"></i><span class="text">Employees</span><span class="minus_plus"></span></a>
-			</div>
-			<div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+			<div id="heading3">
+				<a data-toggle="collapse" class="collapsed" data-target="#collapse3" aria-expanded="true"
+					aria-controls="collapse3">
+					<i class="fa fa-user"></i><span class="text">Employee</span><span class="minus_plus"></span>
+				</a> </div>
+			<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
 				<ul class="sub_menu" id="child1">
 					<li>
-						<a class="collapsed" href="employee/list" data-toggle="collapse" data-target="#collapseOneA"><i
+						<a routerLink="/employee/list" title="View" data-toggle="tooltip" data-placement="right"><i
 								class="fa fa-user"></i><span class="text">View</span></a>
 					</li>
 					<li>
-						<a class="collapsed" href="employee/add" data-toggle="collapse" data-target="#collapseOneB"><i
+						<a routerLink="/employee/add" title="Add" data-toggle="tooltip" data-placement="right"><i
+								class="fa fa-user"></i><span class="text">Add</span></a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<div id="heading3">
+				<a data-toggle="collapse" class="collapsed" data-target="#collapse3" aria-expanded="true"
+					aria-controls="collapse3">
+					<i class="fa fa-user"></i><span class="text">Project</span><span class="minus_plus"></span>
+				</a> </div>
+			<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+				<ul class="sub_menu" id="child1">
+					<li>
+						<a routerLink="/project/list" title="View" data-toggle="tooltip" data-placement="right"><i
+								class="fa fa-user"></i><span class="text">View</span></a>
+					</li>
+					<li>
+						<a routerLink="/project/add" title="Add" data-toggle="tooltip" data-placement="right"><i
+								class="fa fa-user"></i><span class="text">Add</span></a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<div id="heading3">
+				<a data-toggle="collapse" class="collapsed" data-target="#collapse3" aria-expanded="true"
+					aria-controls="collapse3">
+					<i class="fa fa-user"></i><span class="text">Task</span><span class="minus_plus"></span>
+				</a> </div>
+			<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+				<ul class="sub_menu" id="child1">
+					<li>
+						<a routerLink="/task/list" title="View" data-toggle="tooltip" data-placement="right"><i
+								class="fa fa-user"></i><span class="text">View</span></a>
+					</li>
+					<li>
+						<a routerLink="/task/add" title="Add" data-toggle="tooltip" data-placement="right"><i
 								class="fa fa-user"></i><span class="text">Add</span></a>
 					</li>
 				</ul>

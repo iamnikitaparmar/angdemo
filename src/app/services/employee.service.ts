@@ -86,6 +86,24 @@ export class EmployeeService {
     return promise;
 }
 
+isActiveChange(changeEntity) {
+  let promise = new Promise((resolve, reject) => {
+    this.http.post(this.globals.baseAPIUrl + 'employee/isActiveChange', changeEntity)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res);
+        },
+        msg => { // Error
+          reject(msg);
+          //   this.globals.isLoading = false;
+          //this.router.navigate(['/pagenotfound']);      
+        }
+      );
+  });
+  return promise;
+}
+
 deleteEmployee(del) {
   
   let promise = new Promise((resolve, reject) => {

@@ -1,5 +1,10 @@
 <div class="col-md-10 col-sm-10 offset-md-2 main_block">
   <h1 class="float-left">{{ header }} Project</h1>
+  <div class="float-right breadcrumb_block">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/project/list">Project List</a></li>
+      </ol>
+  </div>
   <div class="clearfix"></div>
   <form role="form" #projectForm="ngForm" (ngSubmit)="projectForm.form.valid && Insertproject(projectForm)">
     <div class="row">
@@ -35,9 +40,9 @@
           <label><span>*</span>IsActive</label>
           <br>
           <div class="activeyes_box">
-            <input type="checkbox" #IsActive="ngModel" [(ngModel)]="projectEntity.IsActive" name="IsActive" checked
-              value="1">
-            <label for="IsActive"></label>
+              <input type="checkbox" id="IsActive" #IsActive="ngModel" [(ngModel)]="projectEntity.IsActive" name="IsActive"
+                  checked value="1">
+              <label for="IsActive"></label>
           </div>
         </div>
       </div>

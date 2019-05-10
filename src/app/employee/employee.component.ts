@@ -35,20 +35,23 @@ export class EmployeeComponent implements OnInit {
       this.EmployeeService.fetchEmpolyee(id)
         .then((data) => {
           this.employeeEntity = data;
+          
+          if (data['IsActive'] == 0) {
+            this.employeeEntity.IsActive = 0;
+          } else {
+            this.employeeEntity.IsActive = '1';
+          }
+        
           console.log(this.employeeEntity);
         },
           (error) => {
             //alert('error');
-
-
           });
     }
   }
 
 
   InsertEmployee(employeeForm) {
-    
-
     if (employeeForm.valid) {
       this.EmployeeService.InsertEmployee(this.employeeEntity)
         .then((data) => {
