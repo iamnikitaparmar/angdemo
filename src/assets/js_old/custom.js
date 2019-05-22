@@ -1,6 +1,3 @@
-$( document ).ready(function() {
-  alert("called");
-});
 /*--Footer Year --*/
 var currentYear = (new Date()).getFullYear();
 $("#footer_year").html(currentYear);
@@ -55,7 +52,7 @@ $(".form_time").click(function(){
     $(".switch").attr("style", "pointer-events: none");
 });
 
-$('.select2').select2();
+// $('.select2').select2();
 
 $('#multiselectdropdown').multiselect({
     includeSelectAllOption: true,
@@ -130,7 +127,6 @@ $('#multiupload').imageuploadify();
 /*--SideBar --*/
 new PerfectScrollbar('.sidebar_box');
 $('.sidebar_toggle button').click(function(){
-  alert('sdf');
   $('.sidebar_toggle').toggleClass("active");
   $('.sidebar_wrap').toggleClass("small_menu");
   $('.main_block').toggleClass("large_content");
