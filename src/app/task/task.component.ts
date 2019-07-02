@@ -21,7 +21,6 @@ export class TaskComponent implements OnInit {
   constructor(private router: Router, private TaskService: TaskService, public globals: Globals, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
     debugger
     this.taskEntity = {};
     this.taskEntity.IsActive = "1";

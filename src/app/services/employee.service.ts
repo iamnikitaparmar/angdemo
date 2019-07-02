@@ -11,8 +11,6 @@ export class EmployeeService {
   constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
   InsertEmployee(employeeEntity) {
-    
-  
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Employee/insert_data', employeeEntity)
         .toPromise()
@@ -29,9 +27,7 @@ export class EmployeeService {
     return promise;
   }
 
-
   getId(employeeEntity){
-   
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Employee/update_data', employeeEntity)
         .toPromise()
@@ -48,7 +44,6 @@ export class EmployeeService {
   }
   
   getemployee() {
-    
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'employee/list_employee')
         .toPromise()
@@ -67,8 +62,6 @@ export class EmployeeService {
   }
 
   fetchEmpolyee(id){
-
-    
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'employee/update?id=' + id)
         .toPromise()
@@ -105,7 +98,6 @@ isActiveChange(changeEntity) {
 }
 
 deleteEmployee(del) {
-  
   let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'employee/delete?id=' + del)
       .toPromise()

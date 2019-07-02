@@ -24,7 +24,6 @@ class Employee extends CI_Controller
 
 	public function insert_data()
 	{
-		
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		if(!empty($data['EmployeeId'])){
 			$result = $this->employeemodel->update($data);
@@ -48,22 +47,17 @@ class Employee extends CI_Controller
 
 	public function update_data()
 	{
-		
 		$data = json_decode(trim(file_get_contents('php://input')), true);
-		// $data =$this->input->post();
-		// $data['id'] = $this->input->get('id');
 		$result = $this->employeemodel->update($data);
 		if ($result) {
 			echo json_encode($data);
 		}
-			
-		
 	}
 
 	public function isActiveChange() {
 		$post_data = json_decode(trim(file_get_contents('php://input')), true);	
 		if ($post_data) {
-			$result = $this->Employee_model->isActiveChange($post_data);
+			$result = $this->employeemodel->isActiveChange($post_data);
 			if($result) {
 				echo json_encode('success');	
 			}						

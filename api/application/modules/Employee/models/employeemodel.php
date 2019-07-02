@@ -6,7 +6,6 @@ class Employeemodel extends CI_Model
 	{
 		if ($data) {
 			$post_data = $data;
-
 			$insertdata = array(
 				"EmployeeName" => trim($post_data['EmployeeName']),
 				"JoiningDate" => trim($post_data['JoiningDate']),
@@ -17,8 +16,6 @@ class Employeemodel extends CI_Model
 				"EmailId" => trim($post_data['EmailId']),
 				"IsActive" => trim($post_data['IsActive'])
 			);
-
-
 			$res = $this->db->insert('tblemployees', $insertdata);
 			if ($res) {
 				return true;
@@ -109,12 +106,14 @@ class Employeemodel extends CI_Model
 				if (!empty($db_error) && !empty($db_error['code'])) {
 					throw new Exception('Database error! Error Code [' . $db_error['code'] . '] Error: ' . $db_error['message']);
 					return false; // unreachable return statement !!!
+				}else{
+					return true;
 				}
 			} else {
 				return false;
 			}
 		} catch (Exception $e) {
-			trigger_error($e->getMessage(), E_EMPLOYEE_ERROR);
+			trigger_error($e->getMessage(), E_USER_ERROR);
 			return false;
 		}
 	}

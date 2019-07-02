@@ -45,7 +45,6 @@ class Project extends CI_Controller
 
 	public function update_data()
 	{
-	
 		$data = json_decode(trim(file_get_contents('php://input')), true);
 		// $data =$this->input->post();
 		// $data['id'] = $this->input->get('id');
@@ -57,13 +56,12 @@ class Project extends CI_Controller
 
 	public function delete($id = NULL)
 	{
-	
 		$id = $this->input->get('id');
 		$result = $this->projectmodel->delete($id);
 		if ($result) {
 			$result = ["del_success" => true];
 			echo json_encode($result);
-	}else{
+	} else{
 		$result = ["del_success" => false];
 		echo json_encode($result);
 	}

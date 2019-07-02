@@ -36,7 +36,6 @@ class Projectmodel extends CI_Model
 
 	public function fetch_data($id = NULL)
 	{
-
 		if ($id) {
 			$this->db->select('ProjectId,ProjectName,Description,IsActive');
 			$this->db->where('ProjectId', $id);
@@ -53,20 +52,15 @@ class Projectmodel extends CI_Model
 			return false;
 		}
 	}
-
-
 	public function update($data)
 	{
 		if ($data) {
 			$post_data = $data;
-
 			$updatetdata = array(
-
 				"ProjectName" => trim($post_data['ProjectName']),
 				"Description" => trim($post_data['Description']),
 				"IsActive" => trim($post_data['IsActive'])
 			);
-
 
 			$this->db->where('ProjectId', $post_data['ProjectId']);
 			$res = $this->db->update('tblprojects', $updatetdata);
